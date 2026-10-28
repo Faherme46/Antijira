@@ -174,7 +174,7 @@ def make_handler(service, auth_service=None):
 
 def main():
     parser = argparse.ArgumentParser(description="Antijira · gestión de tareas")
-    parser.add_argument("--host", default="127.0.0.1")
+    parser.add_argument("--host", default="https://antijira.onrender.com/")
     parser.add_argument("--port", type=int, default=10000)
     parser.add_argument("--init-db", action="store_true", help="Comprobar MongoDB y crear índices y contadores")
     parser.add_argument("--init-admin", action="store_true", help="Crear una sola vez el administrador permanente")
