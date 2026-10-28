@@ -6,5 +6,5 @@ config/google_sheets.json
 *service-account*.json
 *.log
 .runtime/
-config/mongodb.json
+mongodb.json
 .mongodb/

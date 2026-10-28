@@ -123,7 +123,7 @@ class MongoTests(unittest.TestCase):
             store = MongoStore(config_path=Path(directory) / "missing.json")
             with self.assertRaises(AppError) as error:
                 store.initialize()
-        self.assertIn("config/mongodb.json", str(error.exception))
+        self.assertIn("mongodb.json", str(error.exception))
 
     def test_http_uses_mongo_service_end_to_end(self):
         server = ThreadingHTTPServer(("127.0.0.1", 0), make_handler(self.service))
