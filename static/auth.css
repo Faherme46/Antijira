@@ -1,0 +1,7 @@
+.login-dialog{border:0;border-radius:22px;padding:0;box-shadow:0 25px 80px #10282555;width:min(430px,calc(100% - 32px))}
+.login-dialog::backdrop{background:#102825cc;backdrop-filter:blur(5px)}
+.login-dialog form{padding:36px}.login-brand{display:flex;margin-bottom:30px;color:#173936}.login-dialog h2{font-size:1.7rem;margin-bottom:4px}
+.admin-grid{display:grid;grid-template-columns:minmax(280px,.8fr) minmax(280px,1fr);gap:22px}.admin-panel{background:#fff;border:1px solid #e4e7df;border-radius:18px;padding:25px}.audit-panel{grid-column:1/-1}
+.user-row,.audit-row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #edf0ea}.user-row:last-child,.audit-row:last-child{border-bottom:0}.user-row div,.audit-row div{display:flex;flex-direction:column}.user-row small,.audit-row small{color:#68736e}.audit-row{justify-content:space-between}.audit-row time{font-size:.82rem;color:#68736e}
+.dead-time-dot{color:#8b5cf6;margin-left:auto;font-size:.75rem}.task-card.is-dead-time{box-shadow:inset 3px 0 #8b5cf6}.task-flag.dead-time{background:#eee8ff;color:#6041a7}.task-table tr.is-dead-time td:first-child{box-shadow:inset 3px 0 #8b5cf6}.dead-time-cell{text-align:center}.dead-time-cell input{width:18px;height:18px;accent-color:#6d4bc3}
+@media(max-width:850px){.admin-grid{grid-template-columns:1fr}.audit-panel{grid-column:auto}.audit-row{align-items:flex-start;flex-direction:column;gap:4px}}

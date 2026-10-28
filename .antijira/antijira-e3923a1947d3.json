@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "antijira",
+  "private_key_id": "e3923a1947d3c3c67dc95762cfdf4c3ce28e0302",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDCvQsNv6kEtL+B\nx0JSqcYOyKgB5yo43xpFqTP3L/DpLXy+H4gphgZRPKV7v++Z63FPqRljLC0sOaGp\nCUB7mcrdDSpf6rS6/oBxnRXm+Q73Qd5uLGeT0LeZFbiqQwO8Iy/6dcBrFORU4+Tf\nhv9hClk3Icyy6y+ISr528QyRR3TgrJaG7SP4ReRjfFUJvPmM4gJxYyw15G9kuWBa\njUKhnLmyFsfEFmOBJuR2GOaVre4qnfHgMCBcJ4oa0hiXfveFvZ1CpL0LUKRWiHZH\nMxU6KyiOnVzwZpD4XOY1RDbuqYovNqzZTihLJER43SdGImeudHOza8XVeZeGIkeQ\nezlz+hy5AgMBAAECggEACP+LtnWr9Wn1rGU86Q1rt6ypaLcaAhk7AUuFeW9Hajre\nF/nkhIirG49aFSsEAwB4UqY9ZFH6/19lWyZwipWLZGXylo6FjdtrK3TG+Y56FM5A\nHSajnZaoGSSCDSn+DvAwTBorSzdiqpKCNZrrC3ybLTs8VmscHefYP645NrBO0//I\n2OP56Q8AD+q11sMNWWH2jmpYDHlOTIdztnIekiVrtzY9WG52AEhgobVEUV7BmQjz\nFzLFjfZgm4OMMy6epmnlfQ6ztAVBEsPqq9F/jAe5nuejlNhtTlNyyT0T9hAlAwtv\nyDTKmZLdodnOThvXHPGRDMVg9Axu0eSt4RaJyZfjZQKBgQDz3u+TUajoAhi1VYlU\ndtMCFC6RglCfNzmKQcmqFs8B5xMg94J+0VBtGFLbL58U5sxEYdh8ezmXVai1GnVe\nrwexk9QcTJLRhSAa5T9lzyhs/SjSrJWXIy98sZcrCEkHylMC+pZbM6BA3UPCUGGC\n3LItX3o5ZFxj2zv0KoxrmydKBQKBgQDMbIiPp5JjKeN3AGZxP8sqWNw5PtKUh413\n+R541uNJYEosA/HiIVF0QJh/dO4oF6pbdW9v6SKmwlvcRdQpmyEJolRg273LYIe0\nW/+zbl6Bm13M/L2q3+nLRBK6Wg6rwlQXdeKy9cnIPozOaAOzqHfnUl1QjaevXDzj\n2YtmFmTiJQKBgFCuZvCESa9IUkhb3i1VioXbi3SUenvSV3UIQuHE3gOxIUD84e12\n7nbJX1AotybBHL9a57Z3RhxtOH2CHWaP3anAUKJ0KvaqZm6/fXP/T06Pitv4QR1Z\nhLJqRqrz+MVdCI2pvei6ccBD89DrqvcScNhWCCfIrlBTDci/8uj+0cbJAoGAVsLN\npuLBL5MstmoWEIS5zqxOM4GlUGLDuSKjOzhA2PikIlA+TfJEJunvj1Dqb1uz8wNB\nm6bADTS6Vh/Q7yOm/vbFhyJcSEAc+IB/YwE53Ro60nCGc0p7aMjohe0JAv8EP7zJ\nzZih3nolusjMoWikEyqS7khg3f1w3meLUXW5tX0CgYAaSU/9b7/qWvEbpJlB+08B\narqXAgU+rvSMw5QrV4LfnWpTRnTd1eCbkc6CNtu+duish5Fssf1xIge2Awp4J4IN\nt17GdshJuR+hkwlyazSz0ixFD2XZ/uUXDsP3ETNssDsHVG6fwW7YLnIdxlUHYTNc\nlCpE3ZfQRUq01fue33ENPw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "antijira@antijira.iam.gserviceaccount.com",
+  "client_id": "101948947867031165070",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/antijira%40antijira.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142f2d">
+  <title>Antijira · Espacio de desarrollo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+  </script>
+  <link href="/static/styles.css" rel="stylesheet">
+  <link href="/static/styles-v2.css" rel="stylesheet">
+  <link href="/static/table.css" rel="stylesheet">
+  <link href="/static/auth.css" rel="stylesheet">
+  <script src="/static/auth.js" defer></script>
+  <script src="/static/table.js" defer></script>
+  <script src="/static/app.js" defer>
+  </script>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#board">
+      <span class="brand-mark">a<span>j</span>
+      </span> antijira<span class="brand-dot">.</span>
+    </a>
+    <div class="workspace">
+      <span class="workspace-icon">D</span>
+      <div>
+        <strong>Desarrollo</strong>
+        <small>Espacio de trabajo</small>
+      </div>
+      <span class="workspace-arrow">⌄</span>
+    </div>
+    <p class="nav-label">ORGANIZA TU TRABAJO</p>
+    <nav aria-label="Navegación principal">
+      <a href="#board" data-view="board" class="nav-link active">
+        <span aria-hidden="true">▥</span> Tablero de tareas</a>
+      <a href="#timeline" data-view="timeline" class="nav-link">
+        <span aria-hidden="true">▦</span> Cronograma</a>
+      <a href="#table" data-view="table" class="nav-link">
+        <span aria-hidden="true">☷</span> Tabla de tareas</a>
+      <a href="#create" data-view="create" class="nav-link">
+        <span aria-hidden="true">＋</span> Registrar tarea</a>
+      <a href="#admin" data-view="admin" class="nav-link admin-only" hidden>
+        <span aria-hidden="true">⚙</span> Usuarios y auditoría</a>
+    </nav>
+    <div class="sidebar-note">
+      <span class="leaf">↗</span>
+      <strong>Menos ruido.<br>Más progreso.</strong>
+      <p>Un lugar para planificar,<br>construir y avanzar en equipo.</p>
+    </div>
+    <div class="sidebar-bottom">
+      <span class="status-dot">
+      </span> MongoDB <small>ALMACENAMIENTO</small>
+    </div>
+  </aside>
+  <div class="main-shell">
+    <header class="topbar">
+      <div>Espacio de trabajo <span>/</span> <strong id="breadcrumb">Tablero de tareas</strong>
+      </div>
+      <div class="topbar-right">
+        <span class="team-label">EQUIPO DE DESARROLLO</span>
+        <span class="team-avatar">D</span>
+        <span id="current-user"></span>
+        <button id="logout" type="button" class="btn btn-light">Salir</button>
+      </div>
+    </header>
+    <main>
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">DEL PLAN A LA ACCIÓN</p>
+          <h1 id="page-title">Tu trabajo, en perspectiva<span>.</span>
+          </h1>
+          <p id="page-subtitle">Prioridades claras. Un equipo conectado. Todo en un mismo tablero.</p>
+        </div>
+        <a class="btn btn-primary new-task" href="#create">＋ Nueva tarea</a>
+      </div>
+      <div id="notice" role="status" aria-live="polite" hidden>
+      </div>
+      <div id="loading" class="loading" role="status" hidden>
+        <span class="spinner-border spinner-border-sm" aria-hidden="true">
+        </span> Consultando tareas…</div>
+      <section id="overview" class="stats" aria-label="Resumen de tareas">
+        <div class="stat">
+          <span>Total de tareas</span>
+          <strong id="stat-total">—</strong>
+          <small>En tu espacio de
+            trabajo</small>
+          <span class="stat-icon">▥</span>
+        </div>
+        <div class="stat">
+          <span>Por completar</span>
+          <strong id="stat-open">—</strong>
+          <small>El siguiente paso
+            importa</small>
+          <span class="stat-icon orange">◷</span>
+        </div>
+        <div class="stat">
+          <span>Finalizadas</span>
+          <strong id="stat-done">—</strong>
+          <small>Progreso que se
+            nota</small>
+          <span class="stat-icon green">✓</span>
+        </div>
+        <div class="stat">
+          <span>Vencidas</span>
+          <strong id="stat-overdue">—</strong>
+          <small>Necesitan tu
+            atención</small>
+          <span class="stat-icon red">!</span>
+        </div>
+      </section>
+      <section id="filters" class="filter-bar" aria-label="Filtros de tareas">
+        <div class="view-switch" role="group" aria-label="Alcance">
+          <button id="general-view" class="selected" type="button" aria-pressed="true">Todo el equipo</button>
+          <button id="person-view" type="button" aria-pressed="false">Por persona</button>
+        </div>
+        <div class="category-filter">
+          <label for="filter-category">Categoría</label>
+          <select id="filter-category" class="form-select">
+            <option value="">Todas las categorías</option>
+          </select>
+        </div>
+        <div class="filter-controls">
+          <label class="visually-hidden" for="filter-person">Responsable</label>
+          <select id="filter-person" class="form-select">
+            <option value="">Todos los responsables</option>
+          </select>
+          <label class="visually-hidden" for="filter-status">Estado</label>
+          <select id="filter-status" class="form-select">
+            <option value="">Todos los estados</option>
+          </select>
+          <label class="visually-hidden" for="filter-priority">Prioridad</label>
+          <select id="filter-priority" class="form-select">
+            <option value="">Todas las prioridades</option>
+          </select>
+          <button id="clear-filters" class="btn btn-light" type="button" title="Limpiar filtros">Limpiar</button>
+        </div>
+      </section>
+      <section id="board-view" class="view-panel">
+        <div class="section-heading">
+          <h2>Tablero de tareas <span id="result-count" class="count-pill">0</span>
+          </h2>
+          <button id="refresh" class="refresh-button" type="button">↻ Actualizar</button>
+        </div>
+        <p class="board-help">Orden de ejecución: mayor prioridad numérica primero. En Terminados se muestran las 10 tareas más recientes. Arrastra una tarea a otro estado o
+          tócala para editarla.</p>
+        <div id="board" class="kanban">
+        </div>
+      </section>
+      <section id="table-view" class="view-panel" hidden>
+        <div class="section-heading">
+          <h2>Tabla de tareas <span id="table-count" class="count-pill">0</span></h2>
+          <button id="table-refresh" class="refresh-button" type="button">↻ Actualizar</button>
+        </div>
+        <p class="board-help">Edita las celdas y pulsa Guardar en esa fila. La entrega automática se recalcula al guardar; selecciona Manual para elegirla.</p>
+        <p id="table-drafts" class="muted-note" role="status" aria-live="polite"></p>
+        <div id="task-table" class="task-table-wrap" role="region" aria-label="Tabla editable de tareas" tabindex="0"></div>
+      </section>
+      <section id="timeline-view" class="view-panel" hidden>
+        <div class="section-heading timeline-controls">
+          <h2>Cronograma</h2>
+          <div class="period-controls">
+            <button id="previous-period" class="btn btn-light" aria-label="Periodo anterior">←</button>
+            <button id="today-period" class="btn btn-light">Hoy</button>
+            <button id="next-period" class="btn btn-light" aria-label="Periodo siguiente">→</button>
+            <label class="visually-hidden" for="timeline-date">Fecha del
+              periodo</label>
+            <input type="date" id="timeline-date" class="form-control">
+            <label class="visually-hidden" for="timeline-scale">Escala</label>
+            <select id="timeline-scale" class="form-select">
+              <option value="day">Día</option>
+              <option value="week" >Semana</option>
+              <option value="month"selected>Mes</option>
+            </select>
+          </div>
+        </div>
+        <div class="timeline-caption">
+          <strong id="period-label">
+          </strong>
+          <div>
+            <span class="legend-planned">
+            </span> Programado <span class="legend-actual">
+            </span> Real <span class="legend-today">
+            </span> Hoy</div>
+        </div>
+        <div id="timeline" class="timeline-scroll">
+        </div>
+        <p id="timeline-note" class="muted-note">
+        </p>
+      </section>
+      <section id="create-view" class="view-panel" hidden>
+        <div class="form-layout">
+          <form id="task-form" class="task-form">
+            <div class="form-heading">
+              <span class="form-number">
+                <strong id="form-code">#</strong>
+              </span>
+              <div>
+                <h2 id="form-title">Una nueva tarea, un nuevo avance</h2>
+                <p>Define los detalles y el calendario de trabajo.</p>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <div class="col-md-6">
+                <label class="form-label" for="task-category">Categoría
+                  <span>*</span>
+                </label>
+                <select id="task-category" name="category" class="form-select" required>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="task-module">Módulo</label>
+                <input id="task-module" name="module" class="form-control" maxlength="180" placeholder="Ej. CARTERA">
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="task-name">Nombre de la tarea
+                  <span>*</span>
+                </label>
+                <input id="task-name" name="name" class="form-control" minlength="3" maxlength="1000"
+                  placeholder="Ej. Implementar el flujo de registro" required>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="task-description">Descripción</label>
+                <textarea id="task-description" name="description" class="form-control" rows="4" maxlength="15000"
+                  placeholder="Contexto, comportamiento y detalles de la tarea">
+</textarea>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="task-requirements">Requerimiento y
+                  notas</label>
+                <textarea id="task-requirements" name="requirements" class="form-control" rows="4" maxlength="15000"
+                  placeholder="Requisitos, criterios de aceptación, referencias…">
+</textarea>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="task-assignee">Responsable
+                  <span>*</span>
+                </label>
+                <select id="task-assignee" name="assignee" class="form-select" required>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="task-status">Estado <span>*</span>
+                </label>
+                <select id="task-status" name="status" class="form-select" required>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="task-priority">Prioridad numérica
+                  <span>*</span>
+                </label>
+                <input id="task-priority" name="priority" class="form-control" inputmode="decimal" maxlength="30"
+                  placeholder="Ej. 1, 5,5 o 6,2" required>
+                <small class="muted-note">El número mayor se realiza primero.</small>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="task-complexity">Complejidad
+                  <span>*</span>
+                </label>
+                <select id="task-complexity" name="complexity" class="form-select" required>
+                </select>
+              </div>
+              <div class="col-md-6 d-flex align-items-center">
+                <label class="form-check mt-4"><input id="task-dead-time" name="dead_time" class="form-check-input" type="checkbox"><span class="form-check-label">Tiempo muerto</span></label>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="task-days">Tiempo estimado <span>*</span>
+                </label>
+                <div class="input-group">
+                  <input id="task-days" name="estimated_days" class="form-control" type="number" min="1" max="3660"
+                    step="1" placeholder="Días enteros" required>
+                  <span class="input-group-text">días
+                    hábiles</span>
+                </div>
+              </div>
+             
+              <div class="col-md-6">
+                <label class="form-label" for="task-start">Inicio programado
+                  <span>*</span>
+                </label>
+                <input id="task-start" name="planned_start" class="form-control" type="date" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="task-end">Entrega tentativa
+                  <span>*</span>
+                </label>
+                <input id="task-end" name="planned_end" class="form-control" type="date" readonly>
+              </div>
+              <div class="col-12">
+                <label class="form-check">
+                  <input id="task-manual" class="form-check-input" type="checkbox">
+                  <span class="form-check-label">Ajustar entrega manualmente</span>
+                </label>
+                <p id="schedule-hint" class="muted-note" role="status">Se incluye el día de inicio como primer día de
+                  trabajo.</p>
+              </div>
+              <div id="actual-dates" class="col-12" hidden>
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <label class="form-label" for="task-actual-start">Inicio real</label>
+                    <input id="task-actual-start" name="actual_start" type="date" class="form-control">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="task-actual-end">Finalización real</label>
+                    <input id="task-actual-end" name="actual_end" type="date" class="form-control">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="form-footnote">Al pasar a EN CURSO se registra el inicio real; al pasar a TERMINADO, la
+              finalización real. Puedes corregir ambas fechas al editar.</p>
+            <div id="form-error" class="alert alert-danger" role="alert" hidden>
+            </div>
+            <div class="form-actions">
+              <a href="#board" class="btn btn-light">Cancelar</a>
+              <button class="btn btn-primary" id="save-task" type="submit" disabled>Registrar tarea <span
+                  aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </form>
+          <aside class="form-aside">
+            <span class="aside-symbol">✳</span>
+            <p class="eyebrow">PLANIFICA CON INTENCIÓN</p>
+            <h3>El buen trabajo<br>empieza con<br>claridad.</h3>
+            <p>Un nombre concreto, un responsable y fechas realistas hacen la diferencia.</p>
+            <hr>
+            <span>01 — Define el resultado</span>
+            <span>02 — Asigna un responsable</span>
+            <span>03 — Reserva el
+              tiempo</span>
+          </aside>
+        </div>
+      </section>
+      <section id="admin-view" class="view-panel" hidden>
+        <div class="admin-grid">
+          <form id="user-form" class="task-form">
+            <h2>Crear usuario</h2><p class="muted-note">El administrador permanente no puede desactivarse.</p>
+            <label class="form-label" for="new-username">Usuario</label><input id="new-username" class="form-control" autocomplete="off" minlength="3" maxlength="40" required>
+            <label class="form-label mt-3" for="new-password">Contraseña temporal</label><input id="new-password" type="password" class="form-control" autocomplete="new-password" minlength="10" maxlength="256" required>
+            <label class="form-label mt-3" for="new-role">Rol</label><select id="new-role" class="form-select"><option value="user">Usuario</option><option value="admin">Administrador</option></select>
+            <div id="user-form-message" class="muted-note mt-3" role="status"></div><button class="btn btn-primary mt-3" type="submit">Crear usuario</button>
+          </form>
+          <div class="admin-panel"><h2>Usuarios</h2><div id="users-list"></div></div>
+          <div class="admin-panel audit-panel"><h2>Actividad reciente</h2><div id="audit-list"></div></div>
+        </div>
+      </section>
+      <footer>Hecho para avanzar, una tarea a la vez.<span>ANTIJIRA · V2.0</span>
+      </footer>
+    </main>
+  </div>
+  <dialog id="task-detail" aria-labelledby="detail-title">
+    <div class="detail-header">
+      <span id="detail-code">
+      </span>
+      <button id="close-detail" class="btn btn-light" aria-label="Cerrar detalle">✕</button>
+    </div>
+    <h2 id="detail-title">
+    </h2>
+    <dl id="detail-fields">
+    </dl>
+  </dialog>
+  <dialog id="login-dialog" class="login-dialog" aria-labelledby="login-title">
+    <form id="login-form">
+      <div class="brand login-brand"><span class="brand-mark">a<span>j</span></span> antijira<span class="brand-dot">.</span></div>
+      <h2 id="login-title">Iniciar sesión</h2><p>Ingresa con tu usuario y contraseña.</p>
+      <label class="form-label" for="login-username">Usuario</label><input id="login-username" class="form-control" autocomplete="username" required autofocus>
+      <label class="form-label mt-3" for="login-password">Contraseña</label><input id="login-password" type="password" class="form-control" autocomplete="current-password" required>
+      <div id="login-error" class="alert alert-danger mt-3" role="alert" hidden></div>
+      <button class="btn btn-primary w-100 mt-3" type="submit">Entrar</button>
+    </form>
+  </dialog>
+</body>
+
+</html>

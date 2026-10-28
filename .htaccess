@@ -1,0 +1,2 @@
+# La aplicación se sirve con Python. Impedir acceso al código/configuración vía Apache.
+Require all denied

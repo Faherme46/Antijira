@@ -1,0 +1,2670 @@
+[
+  {
+    "_id": 132,
+    "code": "ER-0001",
+    "name": "Cuando se está haciendo una compra o factura y se agrega un pago, pero NO se termina la factura, este pago si entra a caja y a cuentas asi no se haya terminado la factura",
+    "module": "PAGOS",
+    "priority": {
+      "$numberDecimal": "6"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "2026-09-10",
+    "estimated_days": 3,
+    "planned_end": "2026-09-15",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "Cuando se está haciendo una compra o factura y se agrega un pago, pero NO se termina la factura, este pago si entra a caja y a cuentas asi no se haya terminado la factura",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 24",
+    "end_mode": "auto",
+    "revision": "bee843496ac04bdabb5741f23099d4fe",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 133,
+    "code": "ER-0002",
+    "name": "Nombre lista de precio ESC 5",
+    "module": "LISTA DE PRECIOS",
+    "priority": {
+      "$numberDecimal": "6"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "Nombre lista de precio ESC 5",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "d86e8951ccc04851be83c29b8ec991f1",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 134,
+    "code": "ER-0003",
+    "name": "Costo cuadre masivo",
+    "module": "PROGRAMA",
+    "priority": {
+      "$numberDecimal": "6"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "Costo cuadre masivo",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "7ea91585bf684b469c18feb5b8d6791a",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 135,
+    "code": "ER-0004",
+    "name": "⁠⁠Poder habilitar o deshabilitar que los usuarios puedas realizar cambio en los datos de la guia y trasnporte cuando estan en recoleccion $$",
+    "module": "LOGISTICA",
+    "priority": {
+      "$numberDecimal": "5.9"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "⁠⁠Poder habilitar o deshabilitar que los usuarios puedas realizar cambio en los datos de la guia y trasnporte cuando estan en recoleccion $$",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "0b2c464839f840c49ec3e5a8c3094c85",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 136,
+    "code": "ER-0005",
+    "name": "Al momento de realizar un pedido desde el módulo de Logística, inicialmente se selecciona un cliente. Luego, si necesitan cambiarlo, realizan el cambio dentro del pedido y aparentemente el sistema sí toma la modificación. Sin embargo, al guardar la información, el cambio de cliente no se refleja correctamente en el pedido que queda registrado en la parte externa Y Al momento de generar la factura, el sistema toma nuevamente el cliente que se había seleccionado inicialmente, en lugar del cliente que fue actualizado dentro del pedido. OP42 / FDVI43 . OP34 / FDVI42 - VITRO INC SAS",
+    "module": "LOGISTICA",
+    "priority": {
+      "$numberDecimal": "5.9"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "Al momento de realizar un pedido desde el módulo de Logística, inicialmente se selecciona un cliente. Luego, si necesitan cambiarlo, realizan el cambio dentro del pedido y aparentemente el sistema sí toma la modificación. Sin embargo, al guardar la información, el cambio de cliente no se refleja correctamente en el pedido que queda registrado en la parte externa Y Al momento de generar la factura, el sistema toma nuevamente el cliente que se había seleccionado inicialmente, en lugar del cliente que fue actualizado dentro del pedido. OP42 / FDVI43 . OP34 / FDVI42 - VITRO INC SAS",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "6e9e6f137c9d4bc78ce695a225f11822",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 137,
+    "code": "ER-0006",
+    "name": "Logistica descuentos maximos",
+    "module": "LOGISTICA",
+    "priority": {
+      "$numberDecimal": "5.9"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "Logistica descuentos maximos",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "3934535e86454389a41958cafd64443a",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 138,
+    "code": "ER-0007",
+    "name": "Cotización no esta permitiendo adjuntar archivos para que se vaya con la factura. VISUAL PUBLICITY",
+    "module": "COTIZACION",
+    "priority": {
+      "$numberDecimal": "6.3"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "",
+    "estimated_days": 0.625,
+    "planned_end": "2026-09-29",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "Cotización no esta permitiendo adjuntar archivos para que se vaya con la factura. VISUAL PUBLICITY",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 5",
+    "end_mode": "auto",
+    "revision": "b590ce59af944131b77242920d6b0b3a",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 139,
+    "code": "ER-0008",
+    "name": "En cotización campo de descripción al crear y editar más grande",
+    "module": "COTIZACION",
+    "priority": {
+      "$numberDecimal": "6.3"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "",
+    "estimated_days": 0.125,
+    "planned_end": "2026-09-26",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "En cotización campo de descripción al crear y editar más grande",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 1",
+    "end_mode": "auto",
+    "revision": "d48fe727eab34bf7858339e52bc823d1",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1310,
+    "code": "ER-0009",
+    "name": "En logistica al lado del stock del producto poder colocar la lista de precio $$",
+    "module": "LOGISTICA",
+    "priority": {
+      "$numberDecimal": "5.9"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "En logistica al lado del stock del producto poder colocar la lista de precio $$",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "42faac8221474f7f9f0ebe0b0f17467b",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1311,
+    "code": "ER-0010",
+    "name": "Que cotización no envíe automáticamente el correo al cliente, que el envío sea solamente manual",
+    "module": "COTIZACION",
+    "priority": {
+      "$numberDecimal": "6.3"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "",
+    "estimated_days": 0.25,
+    "planned_end": "2026-09-26",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "Que cotización no envíe automáticamente el correo al cliente, que el envío sea solamente manual",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 2",
+    "end_mode": "auto",
+    "revision": "d65612f093ab42c9b4d778a31afa75db",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1312,
+    "code": "ER-0011",
+    "name": "LOGISTICA que no diga contraentrega y anticipado si no como cotizacion y pedido, ademas que se pueda filtrar por ese medio $$",
+    "module": "LOGISTICA",
+    "priority": {
+      "$numberDecimal": "5.9"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "LOGISTICA que no diga contraentrega y anticipado si no como cotizacion y pedido, ademas que se pueda filtrar por ese medio $$",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "3078d3bbfe944f948beaa97034a86ae4",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1313,
+    "code": "ER-0012",
+    "name": "Formato de producción con cantidades. 2 reportes: con costo y sin costo",
+    "module": "PRODUCCIÓN",
+    "priority": {
+      "$numberDecimal": "6.1"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "",
+    "estimated_days": 0.25,
+    "planned_end": "2026-10-09",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "HORNEU",
+    "description": "Formato de producción con cantidades. 2 reportes: con costo y sin costo",
+    "requirements": "Tiempo: HORNEU; Horas estimadas: 2",
+    "end_mode": "auto",
+    "revision": "72bfbdeaeff042d99bfb4a22670e523e",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1314,
+    "code": "ER-0013",
+    "name": "Informe en producción de productos elaborados en x rango de fechas, acumualdos por tipo e item",
+    "module": "PRODUCCION",
+    "priority": {
+      "$numberDecimal": "6.1"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "",
+    "estimated_days": 0.125,
+    "planned_end": "2026-10-09",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "HORNEU",
+    "description": "Informe en producción de productos elaborados en x rango de fechas, acumualdos por tipo e item",
+    "requirements": "Tiempo: HORNEU; Horas estimadas: 1",
+    "end_mode": "auto",
+    "revision": "97c99877d9804cd887a2259856c63c6d",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1315,
+    "code": "ER-0014",
+    "name": "Logistica incluir retenciones",
+    "module": "LOGISTICA",
+    "priority": {
+      "$numberDecimal": "5.7"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "2026-09-15",
+    "estimated_days": 0,
+    "planned_end": "2026-09-16",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "Logistica incluir retenciones",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "e4eda06668ca4d8abd1bf1dedf7f95b1",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1316,
+    "code": "ER-0015",
+    "name": "Solo para visual publicity formato de facturación poner el mismo que angel arregló en facturación",
+    "module": "COTIZACION",
+    "priority": {
+      "$numberDecimal": "5.9"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "Solo para visual publicity formato de facturación poner el mismo que angel arregló en facturación",
+    "requirements": "Tiempo: MEDIO",
+    "end_mode": "auto",
+    "revision": "74a3088a2e714e31a0e630aeee9d9e5b",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1317,
+    "code": "ER-0016",
+    "name": "En compras, la retencion se saca después de descuentos, debe sacarse antes de descuentos",
+    "module": "COMPRAS",
+    "priority": {
+      "$numberDecimal": "5.5"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "2026-06-18",
+    "estimated_days": 0.75,
+    "planned_end": "2026-06-18",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "En compras, la retencion se saca después de descuentos, debe sacarse antes de descuentos",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 6",
+    "end_mode": "auto",
+    "revision": "113c4af837bf4037a5bca8986deadfe6",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1318,
+    "code": "ER-0017",
+    "name": "En gestión tecnica, que el filtro de fechas tambien funcione para fechas de facturación",
+    "module": "GESTION TECNICA",
+    "priority": {
+      "$numberDecimal": "5.5"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "2026-09-21",
+    "estimated_days": 1.25,
+    "planned_end": "2026-09-22",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "En gestión tecnica, que el filtro de fechas tambien funcione para fechas de facturación",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 10",
+    "end_mode": "auto",
+    "revision": "18b396499e7b44689c8ffdf94a8a5e50",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1319,
+    "code": "ER-0018",
+    "name": "Revisar que la referencia de pago no este DUPLICADA y arreglar excel de recibos $$",
+    "module": "FACTURA - CARTERA - logistica",
+    "priority": {
+      "$numberDecimal": "5.9"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "Revisar que la referencia de pago no este DUPLICADA y arreglar excel de recibos $$",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "500389fc9c694bcfb47b54fe74cc79f7",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1320,
+    "code": "ER-0019",
+    "name": "Min y max por sucursal",
+    "module": "INVENTARIO",
+    "priority": {
+      "$numberDecimal": "5.9"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "",
+    "estimated_days": 2,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "Min y max por sucursal",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 16",
+    "end_mode": "auto",
+    "revision": "d30fb975c94441cc91fd1a8cc6e04aa5",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1321,
+    "code": "ER-0020",
+    "name": "En baja de cartera, poder hacer una baja correspondiente al mismo valor del saldo final solo seleccionando un check",
+    "module": "",
+    "priority": {
+      "$numberDecimal": "0"
+    },
+    "assignee": "",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "2026-09-02",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "En baja de cartera, poder hacer una baja correspondiente al mismo valor del saldo final solo seleccionando un check",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "ea16dcf6a9bf41f9a9b0b8510cc0bb6c",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1322,
+    "code": "ER-0021",
+    "name": "Recibo de caja desde todos los modulos de ingreso: Facturación, caja ingreso, bonos",
+    "module": "FACTURA",
+    "priority": {
+      "$numberDecimal": "5.8"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "Recibo de caja desde todos los modulos de ingreso: Facturación, caja ingreso, bonos",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "f9d0e559056e461295f935e2711db621",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1323,
+    "code": "ER-0022",
+    "name": "En cartera, cuando se aplica una retención y luego se elimina, y luego se hace una baja de cartera o descuento, el saldo pendiente se daña",
+    "module": "CARTERA",
+    "priority": {
+      "$numberDecimal": "5.5"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "En cartera, cuando se aplica una retención y luego se elimina, y luego se hace una baja de cartera o descuento, el saldo pendiente se daña",
+    "requirements": "Tiempo: MEDIO",
+    "end_mode": "auto",
+    "revision": "561853c081a44349a8031658105e733a",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1324,
+    "code": "ER-0023",
+    "name": "Cuando le doy doble clic al agregar retención, me agrega dos veces el registro",
+    "module": "CARTERA",
+    "priority": {
+      "$numberDecimal": "5.5"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "Cuando le doy doble clic al agregar retención, me agrega dos veces el registro",
+    "requirements": "Tiempo: MEDIO",
+    "end_mode": "auto",
+    "revision": "5d116c9e66f34fbe9e4c78cf8ffadde3",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1325,
+    "code": "ER-0024",
+    "name": "En cartera, cuando se hace una nota credito y después se hacen varios abonos, luego se elimina un abono y se hace una baja de cartera, se daña el saldo",
+    "module": "CARTERA",
+    "priority": {
+      "$numberDecimal": "5.5"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "GRIN MOVILIDAD",
+    "description": "En cartera, cuando se hace una nota credito y después se hacen varios abonos, luego se elimina un abono y se hace una baja de cartera, se daña el saldo",
+    "requirements": "Tiempo: GRIN MOVILIDAD",
+    "end_mode": "auto",
+    "revision": "d7d64d3326d540fb88e7d99b8e510070",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1326,
+    "code": "ER-0025",
+    "name": "Cuando le doy enter a la casilla de valor a pagar en cartera me agrega el pago, me descuenta del saldo pero el pago no queda guardado en ninguna parte",
+    "module": "CARTERA",
+    "priority": {
+      "$numberDecimal": "5.5"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "Cuando le doy enter a la casilla de valor a pagar en cartera me agrega el pago, me descuenta del saldo pero el pago no queda guardado en ninguna parte",
+    "requirements": "Tiempo: MEDIO",
+    "end_mode": "auto",
+    "revision": "cbcac1e2a9bc45a4a7fcdcdf371279f4",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1327,
+    "code": "ER-0026",
+    "name": "En cartera, cuando hago un abono superior al valor a pagar y luego lo anulo, la factura queda con saldo en negativo y desaparece de cartera",
+    "module": "CARTERA",
+    "priority": {
+      "$numberDecimal": "5.5"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "GRIN MOVILIDAD",
+    "description": "En cartera, cuando hago un abono superior al valor a pagar y luego lo anulo, la factura queda con saldo en negativo y desaparece de cartera",
+    "requirements": "Tiempo: GRIN MOVILIDAD",
+    "end_mode": "auto",
+    "revision": "cff5295db879454f973e48b7dd2d5007",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1328,
+    "code": "ER-0027",
+    "name": "Desarrollo cartera + comisiones + contabilidad $$",
+    "module": "CARTERA",
+    "priority": {
+      "$numberDecimal": "5.7"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "Desarrollo cartera + comisiones + contabilidad $$",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "2c0991519ae84ae78c7ac64bdc80a47c",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1329,
+    "code": "ER-0028",
+    "name": "Cuando estoy haciendo una nota credito, puedo devolver un valor más alto que el valor de la factura",
+    "module": "NOTA CREDITO",
+    "priority": {
+      "$numberDecimal": "5.4"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "2026-09-02",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "GRIN MOVILIDAD",
+    "description": "Cuando estoy haciendo una nota credito, puedo devolver un valor más alto que el valor de la factura",
+    "requirements": "Tiempo: GRIN MOVILIDAD",
+    "end_mode": "auto",
+    "revision": "d3e7f8ef215a44079c730a738b7221f3",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1330,
+    "code": "ER-0029",
+    "name": "Informe de traslados por cantidades. Agrupado por item en un rango de fechas cuantos itms se movieron. Poner bloque y wait me al modal.",
+    "module": "TRASLADOS",
+    "priority": {
+      "$numberDecimal": "5.8"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "",
+    "estimated_days": 1,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "HORNEU",
+    "description": "Informe de traslados por cantidades. Agrupado por item en un rango de fechas cuantos itms se movieron. Poner bloque y wait me al modal.",
+    "requirements": "Tiempo: HORNEU; Horas estimadas: 8",
+    "end_mode": "auto",
+    "revision": "d09aa5521d3f4462b73e733767d43014",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1331,
+    "code": "ER-0030",
+    "name": "⁠⁠Que solo muestre los clientes que tenga asociado el usuario $$",
+    "module": "FACTURA - LOGISTICA",
+    "priority": {
+      "$numberDecimal": "5.8"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "⁠⁠Que solo muestre los clientes que tenga asociado el usuario $$",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "01c050a0613d4487b4fa96024bf9bcbc",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1332,
+    "code": "ER-0031",
+    "name": "arreglar el tema de recibos para que separe el recibo por medio de pago pero con el mismo numero de consecutivo",
+    "module": "GENERAL",
+    "priority": {
+      "$numberDecimal": "5.6"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "arreglar el tema de recibos para que separe el recibo por medio de pago pero con el mismo numero de consecutivo",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "e4df5a069dd644609669f63cf3aaad43",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1333,
+    "code": "ER-0032",
+    "name": "En mesas, agregar la hora de apertura de la mesa, y agregar permisos simples de mesas caso NUDO",
+    "module": "MESAS",
+    "priority": {
+      "$numberDecimal": "5.5"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "En mesas, agregar la hora de apertura de la mesa, y agregar permisos simples de mesas caso NUDO",
+    "requirements": "Tiempo: MEDIO",
+    "end_mode": "auto",
+    "revision": "d934b6944e584d0d9aafc32b3bf311ce",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1334,
+    "code": "ER-0033",
+    "name": "En logistica, agregar un campo nuevo de contado o credito, que solo sea información visible en el informe de facturas",
+    "module": "LOGISTICA",
+    "priority": {
+      "$numberDecimal": "5.4"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "En logistica, agregar un campo nuevo de contado o credito, que solo sea información visible en el informe de facturas",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "b9a45935189a43bcb60fffba845db06e",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1335,
+    "code": "ER-0034",
+    "name": "Cuando se le hace nota credito a una factura que tiene retencion que no ha sido pagada, la retencion debe volver a calcularse",
+    "module": "AJUSTE",
+    "priority": {
+      "$numberDecimal": "5.4"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "Cuando se le hace nota credito a una factura que tiene retencion que no ha sido pagada, la retencion debe volver a calcularse",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "bff32e94df544c759822b05b403837ea",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1336,
+    "code": "ER-0035",
+    "name": "En cuentas, agregar un campo de fecha en ingreso, egreso y transacción, para que se pueda agregar en cualquier fecha",
+    "module": "CUENTAS",
+    "priority": {
+      "$numberDecimal": "5.4"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "En cuentas, agregar un campo de fecha en ingreso, egreso y transacción, para que se pueda agregar en cualquier fecha",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "1c6bfe6983e84fd081f678334f7dae89",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1337,
+    "code": "ER-0036",
+    "name": "Cartera medio de pago: bono",
+    "module": "CARTERA",
+    "priority": {
+      "$numberDecimal": "5.5"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "Cartera medio de pago: bono",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "d36939b0e03f42d4999aacbbf3b02ddb",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1338,
+    "code": "ER-0037",
+    "name": "En Cartera, no funciona los dias de vencimiento, facturas vencidas y facturas pendientes",
+    "module": "CARTERA",
+    "priority": {
+      "$numberDecimal": "5.5"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "En Cartera, no funciona los dias de vencimiento, facturas vencidas y facturas pendientes",
+    "requirements": "Tiempo: MEDIO",
+    "end_mode": "auto",
+    "revision": "a3365606ecaf42c8b601cbc306468a07",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1339,
+    "code": "ER-0038",
+    "name": "cuando se paga una factura que tiene un saldo pendiente con decimales, los saldos quedan con 0,0000001045 (ejemplo). Solución check de dar baja a todo el saldo.",
+    "module": "CARTERA",
+    "priority": {
+      "$numberDecimal": "5.5"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "cuando se paga una factura que tiene un saldo pendiente con decimales, los saldos quedan con 0,0000001045 (ejemplo). Solución check de dar baja a todo el saldo.",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "06c96c78c6014dcfa748819889be4b2b",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1340,
+    "code": "ER-0039",
+    "name": "En cartera, puedo hacer un descuento mayor al valor pendiente por pagar",
+    "module": "CARTERA",
+    "priority": {
+      "$numberDecimal": "5"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "2026-09-02",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "GRIN MOVILIDAD",
+    "description": "En cartera, puedo hacer un descuento mayor al valor pendiente por pagar",
+    "requirements": "Tiempo: GRIN MOVILIDAD",
+    "end_mode": "auto",
+    "revision": "2d677f326f6444b2b22df8e99df81470",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1341,
+    "code": "ER-0040",
+    "name": "En cartera, puedo aplicar una retencion mayor al valor de la factura",
+    "module": "CARTERA",
+    "priority": {
+      "$numberDecimal": "5"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "GRIN MOVILIDAD",
+    "description": "En cartera, puedo aplicar una retencion mayor al valor de la factura",
+    "requirements": "Tiempo: GRIN MOVILIDAD",
+    "end_mode": "auto",
+    "revision": "b0cd8c6278434e06a877744bf2476712",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1342,
+    "code": "ER-0041",
+    "name": "En movimientos cuentas, transaccion, si le doy doble clic se duplica",
+    "module": "CUENTAS",
+    "priority": {
+      "$numberDecimal": "5"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "2026-09-02",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "GRIN MOVILIDAD",
+    "description": "En movimientos cuentas, transaccion, si le doy doble clic se duplica",
+    "requirements": "Tiempo: GRIN MOVILIDAD",
+    "end_mode": "auto",
+    "revision": "01f1c6b2bf504ce38cb2ef36045b3230",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1343,
+    "code": "ER-0042",
+    "name": "En gestión técnica, si doy doble clic en facturar la factura se realiza 2 veces",
+    "module": "GESTION TECNICA",
+    "priority": {
+      "$numberDecimal": "5"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "GRIN MOVILIDAD",
+    "description": "En gestión técnica, si doy doble clic en facturar la factura se realiza 2 veces",
+    "requirements": "Tiempo: GRIN MOVILIDAD",
+    "end_mode": "auto",
+    "revision": "e2f8345b66f345549ea5f75ea0996308",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1344,
+    "code": "ER-0043",
+    "name": "Cuando las notas tienen retencion, no aplica el valor de la retencion al valor total, por ende los valores aparecen erroneos",
+    "module": "NOTA CREDITO",
+    "priority": {
+      "$numberDecimal": "5.4"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "2026-10-27",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "Cuando las notas tienen retencion, no aplica el valor de la retencion al valor total, por ende los valores aparecen erroneos",
+    "requirements": "Tiempo: MEDIO",
+    "end_mode": "auto",
+    "revision": "9e20110fa54d4725aac70cc3f2609cf7",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1345,
+    "code": "ER-0044",
+    "name": "Existe un error en nota credito que a veces duplica la nota credito con otro consecutivo",
+    "module": "NOTA CREDITO",
+    "priority": {
+      "$numberDecimal": "5.4"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "2027-10-03",
+    "estimated_days": 0.375,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "MEDIO",
+    "description": "Existe un error en nota credito que a veces duplica la nota credito con otro consecutivo",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 3",
+    "end_mode": "auto",
+    "revision": "a30faf6893d94f8488f9840ca22837ac",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1346,
+    "code": "ER-0045",
+    "name": "Seriales manejarlo desde cotizaciones, incluir ubicaciones a los seriales para hacer traslados de seriales, manejar anulaciones con seriales, manejar seriales en productos con inventario actual",
+    "module": "SERIAL - COTIZACIONES",
+    "priority": {
+      "$numberDecimal": "5.4"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "2026-10-28",
+    "estimated_days": 4.5,
+    "planned_end": "2026-11-02",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "EN CURSO",
+    "complexity": "MEDIO",
+    "description": "Seriales manejarlo desde cotizaciones, incluir ubicaciones a los seriales para hacer traslados de seriales, manejar anulaciones con seriales, manejar seriales en productos con inventario actual",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 36",
+    "end_mode": "auto",
+    "revision": "47d7213a4f6c4818834b83aa147460d3",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1347,
+    "code": "ER-0046",
+    "name": "Seriales error al agregar serial 9 en adelante. Solo toma el 1.",
+    "module": "SERIALES",
+    "priority": {
+      "$numberDecimal": "5.4"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "2026-10-20",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "Seriales error al agregar serial 9 en adelante. Solo toma el 1.",
+    "requirements": "Tiempo: MEDIO",
+    "end_mode": "auto",
+    "revision": "4f63e02ab21449589f1fa1415b5a73d6",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1348,
+    "code": "ER-0047",
+    "name": "Resoluciones únicas en POS grafico parametrizadas desde usuario",
+    "module": "POS",
+    "priority": {
+      "$numberDecimal": "5.1"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "2026-09-23",
+    "estimated_days": 2,
+    "planned_end": "2026-09-24",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "Resoluciones únicas en POS grafico parametrizadas desde usuario",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 16",
+    "end_mode": "auto",
+    "revision": "1f3fbbae7fb143e3b1beec44b9fb63d6",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1349,
+    "code": "ER-0048",
+    "name": "Cuando se hace un borrador desde POS a veces no cargan los productos con los valores correctos",
+    "module": "POS",
+    "priority": {
+      "$numberDecimal": "5.3"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "2026-10-27",
+    "estimated_days": 0.5,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "MEDIO",
+    "description": "Cuando se hace un borrador desde POS a veces no cargan los productos con los valores correctos",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 4",
+    "end_mode": "auto",
+    "revision": "483fb98caf52473fb99815519d7a0f51",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1350,
+    "code": "ER-0049",
+    "name": "La Dian rechaza si envio un producto en valor de 0",
+    "module": "F. ELECTRONICA",
+    "priority": {
+      "$numberDecimal": "5.2"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "2026-10-27",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "MEDIO",
+    "description": "La Dian rechaza si envio un producto en valor de 0",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 6",
+    "end_mode": "auto",
+    "revision": "25ede8305db749579d8149a14a671199",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1351,
+    "code": "ER-0050",
+    "name": "El cuadre masivo de inventario debe arrojar al final un reporte de diferencia por precio de venta, para saber cuanto estoy dejando de vender o cuando podré vender más",
+    "module": "INVENTARIO",
+    "priority": {
+      "$numberDecimal": "5.1"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "2026-09-16",
+    "estimated_days": 1.5,
+    "planned_end": "2026-09-17",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "El cuadre masivo de inventario debe arrojar al final un reporte de diferencia por precio de venta, para saber cuanto estoy dejando de vender o cuando podré vender más",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 12",
+    "end_mode": "auto",
+    "revision": "ea7f62b126414e88adf6909e2c767631",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1352,
+    "code": "ER-0051",
+    "name": "Ajustar el ICO para que en la DIAN aparezca en la casilla de \"Otros impuestos\"",
+    "module": "F. ELECTRONICA",
+    "priority": {
+      "$numberDecimal": "5.2"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "2026-10-27",
+    "estimated_days": 0.75,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "MEDIO",
+    "description": "Ajustar el ICO para que en la DIAN aparezca en la casilla de \"Otros impuestos\"",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 8",
+    "end_mode": "auto",
+    "revision": "18990f151a9c47709e861c319b4ce713",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1353,
+    "code": "ER-0052",
+    "name": "En facturación, el descuento general a veces confunde enteros con decimales",
+    "module": "FACTURA",
+    "priority": {
+      "$numberDecimal": "5.2"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "2026-10-29",
+    "estimated_days": 1,
+    "planned_end": "2026-10-29",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "MEDIO",
+    "description": "En facturación, el descuento general a veces confunde enteros con decimales",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 8",
+    "end_mode": "auto",
+    "revision": "8d06a0aebdc04886837f866eafbd7cfd",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1354,
+    "code": "ER-0053",
+    "name": "Retención automática fijada al cliente (TODOS LOS MOPDULOS)",
+    "module": "CONTABILIDAD",
+    "priority": {
+      "$numberDecimal": "5.1"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "2026-10-30",
+    "estimated_days": 3,
+    "planned_end": "2026-11-05",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "MEDIO",
+    "description": "Retención automática fijada al cliente (TODOS LOS MOPDULOS)",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 16",
+    "end_mode": "auto",
+    "revision": "85f38f07a73a4c1aaa4fc372d6fec82c",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1355,
+    "code": "ER-0054",
+    "name": "Visualizar las propinas en el cierre de caja para cada medio de pago",
+    "module": "CAJA",
+    "priority": {
+      "$numberDecimal": "5"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "2026-12-01",
+    "estimated_days": 1,
+    "planned_end": "2026-12-02",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "MEDIO",
+    "description": "Visualizar las propinas en el cierre de caja para cada medio de pago",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 8",
+    "end_mode": "auto",
+    "revision": "00fef5e53ec5475d820808db7690075b",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1356,
+    "code": "ER-0055",
+    "name": "Editar precios de venta en cotización cuando el producto ya fue agregado",
+    "module": "COTIZACION",
+    "priority": {
+      "$numberDecimal": "4.9"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "",
+    "estimated_days": 2,
+    "planned_end": "2026-12-05",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "MEDIO",
+    "description": "Editar precios de venta en cotización cuando el producto ya fue agregado",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 16",
+    "end_mode": "auto",
+    "revision": "9b47ae7c63e0428c8b33a6099a99856e",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1357,
+    "code": "ER-0056",
+    "name": "En algunos casos, cuando estoy haciendo una cotización y luego convierto a factura, no me trae los productos completos",
+    "module": "COTIZACION",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "2026-11-05",
+    "estimated_days": 1,
+    "planned_end": "2026-11-06",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "En algunos casos, cuando estoy haciendo una cotización y luego convierto a factura, no me trae los productos completos",
+    "requirements": "Horas estimadas: 8",
+    "end_mode": "auto",
+    "revision": "b5b92d63fdb5495f90cd29594d3a7b9c",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1358,
+    "code": "ER-0057",
+    "name": "poder poner observación en comanda desde el celular POS MOVIL",
+    "module": "POS MOVIL",
+    "priority": {
+      "$numberDecimal": "5.1"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "BAJO",
+    "description": "poder poner observación en comanda desde el celular POS MOVIL",
+    "requirements": "Tiempo: BAJO",
+    "end_mode": "auto",
+    "revision": "5fbeb1494f0744ca94ff1901d8b4f20d",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1359,
+    "code": "ER-0058",
+    "name": "No pone el prefijo correcto cuando es una nota debito",
+    "module": "NOTA DEBITO",
+    "priority": {
+      "$numberDecimal": "5"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "2026-09-09",
+    "estimated_days": 1,
+    "planned_end": "2026-09-10",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "MEDIO",
+    "description": "No pone el prefijo correcto cuando es una nota debito",
+    "requirements": "Tiempo: MEDIO; Horas estimadas: 8",
+    "end_mode": "auto",
+    "revision": "741db7d59d144206bf214d06c5cfbed3",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1360,
+    "code": "ER-0059",
+    "name": "En algunos casos, cuando se convierte una cotización a factura, queda con tipfac 0, por ende, no se muestra en documentos",
+    "module": "COTIZACION",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "2026-09-22",
+    "estimated_days": 0.875,
+    "planned_end": "2026-09-22",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "En algunos casos, cuando se convierte una cotización a factura, queda con tipfac 0, por ende, no se muestra en documentos",
+    "requirements": "Horas estimadas: 7",
+    "end_mode": "auto",
+    "revision": "6970c001032a4e42a0e3691a4063cfbc",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1361,
+    "code": "ER-0060",
+    "name": "Corrección de errores en la firma del dashboard: corregir los errores asociados al cargue de la firma en el dashboard, poner un botón nuevo para validar que todo esté bien",
+    "module": "DASHBOARD",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "2026-11-09",
+    "estimated_days": 1,
+    "planned_end": "2026-11-09",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "Corrección de errores en la firma del dashboard: corregir los errores asociados al cargue de la firma en el dashboard, poner un botón nuevo para validar que todo esté bien",
+    "requirements": "",
+    "end_mode": "auto",
+    "revision": "48540bfbccc6419189629f1aff7245a6",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1362,
+    "code": "ER-0061",
+    "name": "En facturación, a veces queda una factura con medio de pago credito, pero el pago es a contado, cuando es de contado a credito también pasa (a veces)",
+    "module": "FACTURA",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "2026-10-27",
+    "estimated_days": 0.625,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "En facturación, a veces queda una factura con medio de pago credito, pero el pago es a contado, cuando es de contado a credito también pasa (a veces)",
+    "requirements": "Horas estimadas: 5",
+    "end_mode": "auto",
+    "revision": "6eb23fb00b49477aa604590c978edef8",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1363,
+    "code": "ER-0062",
+    "name": "Arreglar el IBUA para que funcione de la misma manera que el ICO",
+    "module": "FACTURA",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "2026-10-27",
+    "estimated_days": 2,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "Arreglar el IBUA para que funcione de la misma manera que el ICO",
+    "requirements": "Horas estimadas: 16",
+    "end_mode": "auto",
+    "revision": "1b481957ec7c42ee93bbdcdf277f1f86",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1364,
+    "code": "ER-0063",
+    "name": "En informe de ventas por vendedor, no valida por clientes eliminados, es decir si tengo el mismo cliente 2 veces, uno eliminado y el otro no, en el informe me duplica las facturas de ese cliente",
+    "module": "INFORME",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "2026-11-10",
+    "estimated_days": 1,
+    "planned_end": "2026-11-10",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "En informe de ventas por vendedor, no valida por clientes eliminados, es decir si tengo el mismo cliente 2 veces, uno eliminado y el otro no, en el informe me duplica las facturas de ese cliente",
+    "requirements": "Horas estimadas: 8",
+    "end_mode": "auto",
+    "revision": "7cb3624335d1469a99332241c9805f5b",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1365,
+    "code": "ER-0064",
+    "name": "En la descripción del producto no permitir agregar simbolos extraños o emojis",
+    "module": "FACTURA",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "2026-09-10",
+    "estimated_days": 0.75,
+    "planned_end": "2026-09-11",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "En la descripción del producto no permitir agregar simbolos extraños o emojis",
+    "requirements": "Horas estimadas: 6",
+    "end_mode": "auto",
+    "revision": "5cc9f6341326407f95357cbc7b00e2bf",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1366,
+    "code": "ER-0065",
+    "name": "Logistica segun permiso del usuario no editar precio de venta",
+    "module": "LOGISTICA",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "Logistica segun permiso del usuario no editar precio de venta",
+    "requirements": "",
+    "end_mode": "auto",
+    "revision": "ec9c8aaa2b57406d81b67003f08b1e29",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1367,
+    "code": "ER-0066",
+    "name": "En logistica, no está desarrollado que funcione el tema de productos dobles y productos acumulables",
+    "module": "LOGISTICA",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "En logistica, no está desarrollado que funcione el tema de productos dobles y productos acumulables",
+    "requirements": "",
+    "end_mode": "auto",
+    "revision": "46ddba77157543c9be55ec740e192a69",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1368,
+    "code": "ER-0067",
+    "name": "En logistica, cuando agrego un producto y me toma el stock de ese producto, me trae también registros de inventario que hayan sido eliminados",
+    "module": "LOGISTICA",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "En logistica, cuando agrego un producto y me toma el stock de ese producto, me trae también registros de inventario que hayan sido eliminados",
+    "requirements": "",
+    "end_mode": "auto",
+    "revision": "982c40636ca04a0bb95c5ebe5f4cae64",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1369,
+    "code": "ER-0068",
+    "name": "Logistica productos en $0",
+    "module": "LOGISTICA",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "Logistica productos en $0",
+    "requirements": "",
+    "end_mode": "auto",
+    "revision": "596ab9361b5744a68041573abaabfbf6",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1370,
+    "code": "ER-0069",
+    "name": "Si estoy haciendo un movimiento de inventario y agrego un producto y no lo quito y me salgo, ese producto me queda bloqueado como si lo estuviera utilizando con mi usuario",
+    "module": "MOVIMIENTOS",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "2026-10-27",
+    "estimated_days": 0.5,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "Si estoy haciendo un movimiento de inventario y agrego un producto y no lo quito y me salgo, ese producto me queda bloqueado como si lo estuviera utilizando con mi usuario",
+    "requirements": "Horas estimadas: 4",
+    "end_mode": "auto",
+    "revision": "2baea86c7bbb4127bb93141f3b1d7db9",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1371,
+    "code": "ER-0070",
+    "name": "Logistica dirección traer de catalogo virtual",
+    "module": "LOGISTICA",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "Logistica dirección traer de catalogo virtual",
+    "requirements": "",
+    "end_mode": "auto",
+    "revision": "eace3f1d670e493696826637534d3be6",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1372,
+    "code": "ER-0071",
+    "name": "Cuando modifico el IVA en inventario de un producto con variable, el IVA no se le aplica a todas las variables",
+    "module": "INVENTARIO",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "Cuando modifico el IVA en inventario de un producto con variable, el IVA no se le aplica a todas las variables",
+    "requirements": "",
+    "end_mode": "auto",
+    "revision": "d160c402bccd4b528554e35e2256f903",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1373,
+    "code": "ER-0072",
+    "name": "Previsualización de factura con vendedor real elegida",
+    "module": "FACTURA",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "VITRO",
+    "description": "Previsualización de factura con vendedor real elegida",
+    "requirements": "Tiempo: VITRO",
+    "end_mode": "auto",
+    "revision": "ce424df2a6304e01b96df43b24d67090",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1374,
+    "code": "ER-0073",
+    "name": "En la caja, no toma el valor de cuando un bono se paga con tarjeta debito, por ende, descuadra la caja en el cierre",
+    "module": "CAJA",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "2026-10-27",
+    "estimated_days": 0.75,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "En la caja, no toma el valor de cuando un bono se paga con tarjeta debito, por ende, descuadra la caja en el cierre",
+    "requirements": "Horas estimadas: 6",
+    "end_mode": "auto",
+    "revision": "cc204b1398cd4740bcd1706d40175a28",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1375,
+    "code": "ER-0074",
+    "name": "En caja no está separando por multiples cajas, es decir, si tengo seleccionada la caja menor, tambien me trae cuando hago cosas con caja mayor",
+    "module": "CAJA",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "2026-10-27",
+    "estimated_days": 2,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "En caja no está separando por multiples cajas, es decir, si tengo seleccionada la caja menor, tambien me trae cuando hago cosas con caja mayor",
+    "requirements": "Horas estimadas: 16",
+    "end_mode": "auto",
+    "revision": "d365420e6eb94d70a5d75df98f81367d",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1376,
+    "code": "ER-0075",
+    "name": "Cuando hago cotizaciones, borradores de factura, pedidos y cualquier cosa que sea una pre factura, y luego cambio los datos del cliente y luego hago la factura, no aparecen los pagos de esa factura",
+    "module": "CLIENTES",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "2026-11-20",
+    "estimated_days": 2,
+    "planned_end": "2026-11-23",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "Cuando hago cotizaciones, borradores de factura, pedidos y cualquier cosa que sea una pre factura, y luego cambio los datos del cliente y luego hago la factura, no aparecen los pagos de esa factura",
+    "requirements": "Horas estimadas: 16",
+    "end_mode": "auto",
+    "revision": "d346f6c5697e41be89b7be2fddd68166",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1377,
+    "code": "ER-0076",
+    "name": "En clientes, si pongo el cliente con unos datos x, lo elimino y después vuelvo a poner ese mismo cliente con la misma cedula pero con datos diferentes, me sigue tomando los datos del eliminado",
+    "module": "CLIENTES",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "2026-11-24",
+    "estimated_days": 3,
+    "planned_end": "2026-11-26",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "En clientes, si pongo el cliente con unos datos x, lo elimino y después vuelvo a poner ese mismo cliente con la misma cedula pero con datos diferentes, me sigue tomando los datos del eliminado",
+    "requirements": "",
+    "end_mode": "auto",
+    "revision": "2d96c754cdf442f9a034652578931a0e",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1378,
+    "code": "ER-0077",
+    "name": "Al crear una compra e intentar realizar el cargue masivo de productos mediante el formato Excel, no permite el uso de puntos ni decimales.",
+    "module": "COMPRAS",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "2026-09-18",
+    "estimated_days": 0.25,
+    "planned_end": "2026-09-18",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "Al crear una compra e intentar realizar el cargue masivo de productos mediante el formato Excel, no permite el uso de puntos ni decimales.",
+    "requirements": "Horas estimadas: 2",
+    "end_mode": "auto",
+    "revision": "ebcc7c91b9894ac89511b4f8ccaddfd5",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1379,
+    "code": "ER-0078",
+    "name": "En compras, cuando hago una compra con ICUI o IBUA y la hago a credito y luego la quiero pagar, no me toma el ICUI en el valor pendiente",
+    "module": "COMPRAS",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "2027-03-20",
+    "estimated_days": 1,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "En compras, cuando hago una compra con ICUI o IBUA y la hago a credito y luego la quiero pagar, no me toma el ICUI en el valor pendiente",
+    "requirements": "Horas estimadas: 8",
+    "end_mode": "auto",
+    "revision": "e2700826db7d412aa603af7a3758fe05",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1380,
+    "code": "ER-0079",
+    "name": "Desde alguna parte del sistema me deja crear un producto poniendole simbolos extraños en el nombre ´´´",
+    "module": "INVENTARIO",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "2026-09-11",
+    "estimated_days": 0.75,
+    "planned_end": "2026-09-12",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "Desde alguna parte del sistema me deja crear un producto poniendole simbolos extraños en el nombre ´´´",
+    "requirements": "Horas estimadas: 6",
+    "end_mode": "auto",
+    "revision": "db793c0937ab4ec6abd109b6670ea133",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1381,
+    "code": "ER-0080",
+    "name": "En nomina, cuando quiero editar la fecha de contrato antes de enviar la nomina no actualiza correctamente",
+    "module": "NOMINA",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "2026-11-27",
+    "estimated_days": 1,
+    "planned_end": "2026-11-27",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "En nomina, cuando quiero editar la fecha de contrato antes de enviar la nomina no actualiza correctamente",
+    "requirements": "Horas estimadas: 8",
+    "end_mode": "auto",
+    "revision": "7cb582cd67ab4658a5d1d01d08d1955e",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1382,
+    "code": "ER-0081",
+    "name": "Cuando creo un usuario con una tilde, se le cambia por simbolos extraños",
+    "module": "USUARIOS",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "Cuando creo un usuario con una tilde, se le cambia por simbolos extraños",
+    "requirements": "",
+    "end_mode": "auto",
+    "revision": "2843f8f0b3764271912fc70df610b29d",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1383,
+    "code": "ER-0082",
+    "name": "Cuando hago 2 pagos en efectivo a una factura, el cambio en la tirilla no me lo calcula correctamente",
+    "module": "FACTURA",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "2026-10-27",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "Cuando hago 2 pagos en efectivo a una factura, el cambio en la tirilla no me lo calcula correctamente",
+    "requirements": "",
+    "end_mode": "auto",
+    "revision": "8843a179d3aa480691fdf6f6c3b18a04",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1384,
+    "code": "ER-0083",
+    "name": "Crear vendedor no me valida si la cedula está eliminada o no",
+    "module": "VENDEDORES",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "2026-09-15",
+    "estimated_days": 0.25,
+    "planned_end": "2026-09-15",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "Crear vendedor no me valida si la cedula está eliminada o no",
+    "requirements": "Horas estimadas: 2",
+    "end_mode": "auto",
+    "revision": "2dbc03c49def446fac7e7e36b90ca391",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1385,
+    "code": "ER-0084",
+    "name": "En informes, ventas por vendedor, me toma clientes con la misma cedula que esten eliminados",
+    "module": "INFORMES",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "2026-09-14",
+    "estimated_days": 0.375,
+    "planned_end": "2026-09-14",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "En informes, ventas por vendedor, me toma clientes con la misma cedula que esten eliminados",
+    "requirements": "Horas estimadas: 3",
+    "end_mode": "auto",
+    "revision": "3cafe2ac1a74462fb01b6f7a12d1ed27",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1386,
+    "code": "ER-0087",
+    "name": "El logo no carga en empresas cuando actualizo por primera vez",
+    "module": "BD",
+    "priority": {
+      "$numberDecimal": "2"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "2026-11-30",
+    "estimated_days": 0.5,
+    "planned_end": "2026-11-30",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "El logo no carga en empresas cuando actualizo por primera vez",
+    "requirements": "Horas estimadas: 4",
+    "end_mode": "auto",
+    "revision": "baf75628260245bcb3295dbb9f1fe4ed",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1387,
+    "code": "ER-0088",
+    "name": "En tienda, al darle clic al botón \"Continuar comprando\" Redirige a un lugar que no es",
+    "module": "TIENDA",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "En tienda, al darle clic al botón \"Continuar comprando\" Redirige a un lugar que no es",
+    "requirements": "",
+    "end_mode": "auto",
+    "revision": "c4b0beea0232410f8b065ecfe92e76f9",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1388,
+    "code": "ER-0089",
+    "name": "Cuando se va a anular una factura con AIU los valores no son correctos",
+    "module": "ANULAR",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "2026-10-27",
+    "estimated_days": 0.5,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "Cuando se va a anular una factura con AIU los valores no son correctos",
+    "requirements": "Horas estimadas: 4",
+    "end_mode": "auto",
+    "revision": "6211f0068a72480a80fedeee42050600",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1389,
+    "code": "ER-0090",
+    "name": "En usuarios, no puedo eliminar todos los usuarios de una empresa, debe existir por lo menos uno",
+    "module": "USUARIOS",
+    "priority": {
+      "$numberDecimal": "2"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "2026-09-14",
+    "estimated_days": 0.75,
+    "planned_end": "2026-09-15",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "TERMINADO",
+    "complexity": "",
+    "description": "En usuarios, no puedo eliminar todos los usuarios de una empresa, debe existir por lo menos uno",
+    "requirements": "Horas estimadas: 6",
+    "end_mode": "auto",
+    "revision": "b6ba25c60d2d47cab6d32a7ae3d2ba3a",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1390,
+    "code": "ER-0092",
+    "name": "LA FUNCIONALIDAD DE OCULTAR ITEMS EN TIRILLA POS NO FUNCIONA CUANDO ES TIRILLA POS DE UNA FACTURA ELECTRONICA",
+    "module": "",
+    "priority": {
+      "$numberDecimal": "4"
+    },
+    "assignee": "ANGEL",
+    "planned_start": "",
+    "estimated_days": 0,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "LA FUNCIONALIDAD DE OCULTAR ITEMS EN TIRILLA POS NO FUNCIONA CUANDO ES TIRILLA POS DE UNA FACTURA ELECTRONICA",
+    "requirements": "",
+    "end_mode": "auto",
+    "revision": "e2680f39a364400bb4548984acc10989",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1391,
+    "code": "ER-0093",
+    "name": "El vendedor no se asigna a la factura",
+    "module": "LOGISTICA",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "2026-11-30",
+    "estimated_days": 0.5,
+    "planned_end": "2026-11-30",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "El vendedor no se asigna a la factura",
+    "requirements": "Horas estimadas: 4",
+    "end_mode": "auto",
+    "revision": "69cf83a3fcf240ed874162bb8d64cd4b",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1392,
+    "code": "ER-0094",
+    "name": "en CATALOGO VIRTUAL La descripción no se muestra con espacios, se muestra todo pegado",
+    "module": "TIENDA",
+    "priority": {
+      "$numberDecimal": "3"
+    },
+    "assignee": "MARCOS",
+    "planned_start": "",
+    "estimated_days": 0.5,
+    "planned_end": "",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "en CATALOGO VIRTUAL La descripción no se muestra con espacios, se muestra todo pegado",
+    "requirements": "Horas estimadas: 4",
+    "end_mode": "auto",
+    "revision": "a8b1fa7aee4a4c4c9e53dd4f0386499f",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  },
+  {
+    "_id": 1393,
+    "code": "ER-0095",
+    "name": "En cartera la retencion con nota credito debe descontarse",
+    "module": "CARTERA",
+    "priority": {
+      "$numberDecimal": "5.5"
+    },
+    "assignee": "EMILTON",
+    "planned_start": "2026-10-28",
+    "estimated_days": 1,
+    "planned_end": "2026-10-28",
+    "actual_start": "",
+    "actual_end": "",
+    "status": "PENDIENTE",
+    "complexity": "",
+    "description": "En cartera la retencion con nota credito debe descontarse",
+    "requirements": "",
+    "end_mode": "auto",
+    "revision": "ec80290e1d7f4b9bb302cfcf79aed290",
+    "category": "error",
+    "category_name": "Error",
+    "created_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    },
+    "updated_at": {
+      "$date": "2026-10-28T20:00:37.602Z"
+    }
+  }
+]

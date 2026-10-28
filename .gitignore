@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+config/google_sheets.json
+*credentials*.json
+*service-account*.json
+*.log
+.runtime/
+config/mongodb.json
+.mongodb/

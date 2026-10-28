@@ -1,0 +1,24 @@
+.task-table-wrap{overflow:auto;max-height:70vh;border:1px solid var(--line);border-radius:10px;background:#fff}
+.task-table{border-collapse:separate;border-spacing:0;width:100%;min-width:1950px;font-size:12px}
+.task-table th{position:sticky;top:0;z-index:2;background:#edf3e8;color:#53704a;font-size:10px;white-space:nowrap;text-align:left;padding:13px 10px;border-bottom:1px solid var(--line)}
+.task-table td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;background:#fff}
+.task-table tr.is-dirty td{background:#fffcef}
+.task-table td:first-child,.task-table th:first-child{position:sticky;left:0;min-width:85px;z-index:1}
+.task-table th:first-child{z-index:3}
+.task-table .table-name{min-width:225px;max-width:280px}
+.table-name button{border:0;background:none;color:var(--ink);font-size:12px;text-align:left;padding:0;line-height:1.5;overflow-wrap:anywhere}
+.table-name small{display:block;color:#87977d;font-size:10px;margin-top:5px}
+.task-table input,.task-table select{font-size:11px;min-height:34px;padding:6px 8px}
+.task-table input[type=date]{width:135px}
+.task-table input[name=priority]{width:80px}
+.task-table input[name=estimated_days]{width:80px}
+.task-table select{min-width:120px}
+.task-table select[name=status],.task-table select[name=assignee]{min-width:145px}
+.task-table input[readonly]{background:#edf2e8;color:#6b7b61}
+.table-actions{min-width:205px;position:sticky;right:0;z-index:1;box-shadow:-3px 0 6px #203c3808}
+.task-table th:last-child{right:0;z-index:3}
+.table-actions .btn{padding:7px 9px;font-size:10px;margin:0 4px 6px 0}
+.table-row-message{font-size:10px;max-width:220px;line-height:1.5;color:#7d8b72;margin:0;white-space:normal}
+.table-row-message.error{color:#ae423c}
+.task-table button:disabled{opacity:.5}
+@media(max-width:760px){.sidebar nav{flex-wrap:wrap;justify-content:flex-start}.task-table-wrap{max-height:75vh}.table-actions{position:static;box-shadow:none}.task-table th:last-child{right:auto}}
