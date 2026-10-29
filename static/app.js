@@ -37,6 +37,9 @@ function notice(message, kind = "warning") {
   $("#notice").textContent = message;
   $("#notice").className = `alert alert-${kind}`;
   $("#notice").hidden = !message;
+  setTimeout(() => {
+    if ($("#notice").textContent === message) $("#notice").hidden = true;
+  }, 8000);
 }
 
 function setBusy(busy) {
