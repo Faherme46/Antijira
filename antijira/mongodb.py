@@ -22,7 +22,7 @@ def database_operation(function):
             raise AppError("El código o registro ya existe en MongoDB. Actualiza antes de reintentar.", 409) from exc
         except PyMongoError as exc:
             # No devolver detalles del driver que puedan contener URI o credenciales.
-            raise AppError("No se pudo completar la operación en MongoDB. Comprueba el servicio y la configuración. Si estabas guardando, actualiza antes de reintentar." + exc.has_error_label(), 503) from exc
+            raise AppError("No se pudo completar la operación en MongoDB. Comprueba el servicio y la configuración. Si estabas guardando, actualiza antes de reintentar." + str(exc), 503) from exc
     return wrapped
 
 
