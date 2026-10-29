@@ -12,7 +12,7 @@ from urllib.request import Request, urlopen
 from unittest.mock import patch
 
 from app import make_handler
-from antijira.calendar_co import holidays, business_end
+from antijira.calendar_co import holidays, business_end, next_business_day
 from antijira.domain import AppError, COLUMNS, parameters, validate_task, next_code, normalize_date, column_positions
 from antijira.service import TaskService
 from antijira.sheets import SheetsStore, revision
@@ -99,6 +99,9 @@ class CalendarTests(unittest.TestCase):
                   "2026-07-20","2026-08-07","2026-08-17","2026-10-12","2026-11-02",
                   "2026-11-16","2026-12-08","2026-12-25"}
         self.assertEqual({d.isoformat() for d in holidays(2026)},expected)
+
+    def test_next_business_day_skips_weekend_and_holiday(self):
+        self.assertEqual(next_business_day("2026-10-30"), "2026-11-03")
 
 
 class DomainTests(unittest.TestCase):

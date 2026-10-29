@@ -44,7 +44,7 @@ class MongoTests(unittest.TestCase):
 
     def test_category_sequences_are_independent(self):
         def create(i):
-            return self.service.create_task(payload("errores" if i % 2 else "desarrollo"))
+            return self.service.create_task(payload("error" if i % 2 else "desarrollo"))
         # Inicialización separada; la prueba paralela ejercita incrementos y guardados.
         self.store.initialize()
         with ThreadPoolExecutor(max_workers=12) as executor:
@@ -65,7 +65,7 @@ class MongoTests(unittest.TestCase):
     def test_move_keeps_id_and_legacy_fields(self):
         old = self.service.create_task(payload())
         self.db.tasks.update_one({"_id": old["id"]}, {"$set": {"legacy": {"extra": "conservar"}}})
-        new = self.service.update_task("desarrollo", old["id"], {"category": "errores", "revision": old["revision"]})
+        new = self.service.update_task("desarrollo", old["id"], {"category": "error", "revision": old["revision"]})
         self.assertEqual(new["id"], old["id"])
         self.assertEqual(new["code"], "ER-001")
         self.assertEqual(self.db.tasks.count_documents({}), 1)
@@ -79,6 +79,44 @@ class MongoTests(unittest.TestCase):
         with patch("antijira.mongo_service.today_co", return_value="2026-10-28"):
             new = self.service.update_task(old["category"], old["id"], {"revision": old["revision"], "status": "EN CURSO"})
         self.assertEqual(new["actual_start"], "2026-10-28")
+
+    def test_new_high_priority_task_moves_following_assignee_tasks(self):
+        low = self.service.create_task({**payload(), "name":"Baja", "priority":"2", "planned_start":"2026-11-10"})
+        high = self.service.create_task({**payload(), "name":"Alta", "priority":"8", "planned_start":"2026-10-30"})
+        moved = self.store.get(low["category"], low["id"])
+        self.assertEqual(high["planned_end"], "2026-11-03")
+        self.assertEqual((moved["planned_start"], moved["planned_end"]), ("2026-11-04", "2026-11-05"))
+
+    def test_date_update_moves_only_lower_priority_tasks(self):
+        high = self.service.create_task({**payload(), "name":"Alta", "priority":"8", "planned_start":"2026-10-30"})
+        low = self.service.create_task({**payload(), "name":"Baja", "priority":"2", "planned_start":"2026-12-01"})
+        updated = self.service.update_task(high["category"], high["id"], {"revision":high["revision"], "planned_start":"2026-11-04"})
+        moved = self.store.get(low["category"], low["id"])
+        self.assertEqual(updated["planned_end"], "2026-11-05")
+        self.assertEqual((moved["planned_start"], moved["planned_end"]), ("2026-11-06", "2026-11-09"))
+        self.assertEqual(self.db.audit.count_documents({"action":"task.reschedule"}), 1)
+
+    def test_dead_time_does_not_move_or_occupy_the_schedule(self):
+        low = self.service.create_task({**payload(), "name":"Baja", "priority":"2", "planned_start":"2026-12-01"})
+        dead = self.service.create_task({**payload(), "name":"Pausa", "priority":"5", "planned_start":"2026-11-10", "dead_time":True})
+        unchanged = self.store.get(low["category"], low["id"])
+        self.assertEqual(unchanged["planned_start"], "2026-12-01")
+        high = self.service.create_task({**payload(), "name":"Alta", "priority":"8", "planned_start":"2026-10-30"})
+        moved = self.store.get(low["category"], low["id"])
+        preserved_dead = self.store.get(dead["category"], dead["id"])
+        self.assertEqual(moved["planned_start"], "2026-11-04")
+        self.assertEqual(preserved_dead["planned_start"], "2026-11-10")
+        self.assertEqual(high["planned_end"], "2026-11-03")
+
+    def test_marking_task_as_dead_time_closes_its_gap(self):
+        high = self.service.create_task({**payload(), "name":"Alta", "priority":"8", "planned_start":"2026-10-30"})
+        middle = self.service.create_task({**payload(), "name":"Media", "priority":"5", "planned_start":"2026-11-20"})
+        low = self.service.create_task({**payload(), "name":"Baja", "priority":"2", "planned_start":"2026-12-01"})
+        current_middle = self.store.get(middle["category"], middle["id"])
+        self.service.update_task(middle["category"], middle["id"], {"revision":current_middle["revision"], "dead_time":True})
+        moved = self.store.get(low["category"], low["id"])
+        self.assertEqual(high["planned_end"], "2026-11-03")
+        self.assertEqual((moved["planned_start"], moved["planned_end"]), ("2026-11-04", "2026-11-05"))
 
     def test_only_ten_most_recent_completed_are_returned(self):
         for number in range(12):
@@ -137,7 +175,7 @@ class MongoTests(unittest.TestCase):
             headers = {"Content-Type": "application/json", "X-CSRF-Token": config["csrf_token"]}
             with urlopen(Request(url + "/api/tasks", json.dumps(payload()).encode(), headers)) as response:
                 task = json.load(response)["task"]
-            changes = {"revision": task["revision"], "category": "errores", "priority": "6,2"}
+            changes = {"revision": task["revision"], "category": "error", "priority": "6,2"}
             with urlopen(Request(url + f"/api/tasks/desarrollo/{task['row']}", json.dumps(changes).encode(), headers, method="PUT")) as response:
                 updated = json.load(response)["task"]
             self.assertEqual(updated["id"], task["id"])

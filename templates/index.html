@@ -126,18 +126,9 @@
           </select>
         </div>
         <div class="filter-controls">
-          <label class="visually-hidden" for="filter-person">Responsable</label>
-          <select id="filter-person" class="form-select">
-            <option value="">Todos los responsables</option>
-          </select>
-          <label class="visually-hidden" for="filter-status">Estado</label>
-          <select id="filter-status" class="form-select">
-            <option value="">Todos los estados</option>
-          </select>
-          <label class="visually-hidden" for="filter-priority">Prioridad</label>
-          <select id="filter-priority" class="form-select">
-            <option value="">Todas las prioridades</option>
-          </select>
+          <details id="filter-person" class="multi-filter"><summary>Todos los responsables</summary><div class="multi-filter-options"></div></details>
+          <details id="filter-status" class="multi-filter"><summary>Todos los estados</summary><div class="multi-filter-options"></div></details>
+          <details id="filter-priority" class="multi-filter"><summary>Todas las prioridades</summary><div class="multi-filter-options"></div></details>
           <button id="clear-filters" class="btn btn-light" type="button" title="Limpiar filtros">Limpiar</button>
         </div>
       </section>
@@ -168,14 +159,14 @@
             <button id="previous-period" class="btn btn-light" aria-label="Periodo anterior">←</button>
             <button id="today-period" class="btn btn-light">Hoy</button>
             <button id="next-period" class="btn btn-light" aria-label="Periodo siguiente">→</button>
-            <label class="visually-hidden" for="timeline-date">Fecha del
-              periodo</label>
-            <input type="date" id="timeline-date" class="form-control">
-            <label class="visually-hidden" for="timeline-scale">Escala</label>
-            <select id="timeline-scale" class="form-select">
-              <option value="day">Día</option>
-              <option value="week" >Semana</option>
-              <option value="month"selected>Mes</option>
+            <label for="timeline-start">Desde</label><input type="date" id="timeline-start" class="form-control" min="1900-01-01" max="2090-12-31">
+            <label for="timeline-end">Hasta</label><input type="date" id="timeline-end" class="form-control" min="1900-01-01" max="2090-12-31">
+            <label class="visually-hidden" for="timeline-preset">Periodo sugerido</label>
+            <select id="timeline-preset" class="form-select">
+              <option value="custom">Rango personalizado</option>
+              <option value="week">Semana</option>
+              <option value="month" selected>Mes</option>
+              <option value="quarter">Trimestre</option>
             </select>
           </div>
         </div>
@@ -186,7 +177,7 @@
             <span class="legend-planned">
             </span> Programado <span class="legend-actual">
             </span> Real <span class="legend-today">
-            </span> Hoy</div>
+            </span> Hoy <span class="legend-holiday"></span> Festivo <span class="legend-weekend"></span> Fin de semana</div>
         </div>
         <div id="timeline" class="timeline-scroll">
         </div>

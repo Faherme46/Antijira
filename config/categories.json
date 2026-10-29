@@ -1,6 +1,6 @@
 {
   "categories": [
     {"id": "desarrollo", "name": "Desarrollo", "code_prefix": "DS-", "code_digits": 3},
-    {"id": "errores", "name": "Errores", "code_prefix": "ER-", "code_digits": 3}
+    {"id": "error", "name": "Error", "code_prefix": "ER-", "code_digits": 3}
   ]
 }

@@ -72,11 +72,38 @@ async function loadConfig() {
 
 function updateFilterOptions() {
   const union = (key, field) => [...new Set([...state.config[key], ...state.tasks.map(t => t[field]).filter(Boolean)])];
-  populate("#filter-person", union("people", "assignee"), "Todos los responsables", true);
-  populate("#filter-status", union("statuses", "status"), "Todos los estados", true);
+  populateMulti("#filter-person", union("people", "assignee"), "Todos los responsables");
+  populateMulti("#filter-status", union("statuses", "status"), "Todos los estados");
   const priorities = [...new Set(state.tasks.map(t => String(t.priority)).filter(Boolean))].sort((a, b) => Number(String(b).replace(",", ".")) - Number(String(a).replace(",", ".")));
-  populate("#filter-priority", priorities, "Todas las prioridades", true);
+  populateMulti("#filter-priority", priorities, "Todas las prioridades");
   categoryOptions("#filter-category", true);
+}
+
+function multiValues(selector) {
+  return new Set([...document.querySelectorAll(`${selector} input:checked`)].map(input => input.value));
+}
+
+function populateMulti(selector, values, emptyLabel) {
+  const control = $(selector), selected = multiValues(selector), options = control.querySelector(".multi-filter-options");
+  const existing = control.querySelectorAll("input[type=checkbox]").length;
+  const selectNew = !control.dataset.initialized || existing === 0 || selected.size === existing;
+  options.innerHTML = values.map(
+    value => `<label><input type="checkbox" value="${escapeHtml(value)}" ${selectNew || selected.has(String(value)) ? 'checked' : ''}>
+    <span>${escapeHtml(value)}</span></label>`).join("");
+  options.insertAdjacentHTML("afterbegin", '<div class="multi-filter-actions"><button type="button" data-multi-action="all">Seleccionar todos</button><button type="button" data-multi-action="none">Borrar todos</button></div>');
+  control.dataset.initialized = "true";
+  updateMultiLabel(selector, emptyLabel);
+}
+
+function updateMultiLabel(selector, emptyLabel) {
+  const selected = [...multiValues(selector)], total = document.querySelectorAll(`${selector} input[type=checkbox]`).length, summary = $(`${selector} summary`);
+  summary.textContent = selected.length === total && total ? emptyLabel : !selected.length ? "Ninguno seleccionado" : selected.length === 1 ? selected[0] : `${selected.length} seleccionados`;
+}
+
+const multiLabels = {"filter-person":"Todos los responsables", "filter-status":"Todos los estados", "filter-priority":"Todas las prioridades"};
+function setMultiSelection(control, checked) {
+  control.querySelectorAll("input[type=checkbox]").forEach(input => input.checked = checked);
+  updateMultiLabel("#" + control.id, multiLabels[control.id]);
 }
 
 async function refresh(keepNotice = false) {
@@ -102,7 +129,8 @@ async function refresh(keepNotice = false) {
 
 function filteredTasks() {
   const number = value => Number(String(value).replace(",", ".")) || -Infinity;
-  return state.tasks.filter(task => [["#filter-category", "category"], ["#filter-person", "assignee"], ["#filter-status", "status"], ["#filter-priority", "priority"]].every(([selector, key]) => !$(selector).value || String(task[key]) === $(selector).value)).sort((a, b) => number(b.priority) - number(a.priority));
+  const category = $("#filter-category").value, people = multiValues("#filter-person"), statuses = multiValues("#filter-status"), priorities = multiValues("#filter-priority");
+  return state.tasks.filter(task => (!category || task.category === category) && people.has(String(task.assignee)) && statuses.has(String(task.status)) && priorities.has(String(task.priority))).sort((a, b) => number(b.priority) - number(a.priority));
 }
 
 function switchView() {
@@ -142,7 +170,7 @@ function taskFlag(task) {
 function card(task, index) {
   const code = task.code || `${task.category.toUpperCase()} · fila ${task.row}`;
   return `<button class="task-card compact-card ${isOverdue(task) ? 'is-overdue' : ''} 
-    ${task.dead_time ? 'is-dead-time' : ''}" draggable="true" data-task-index="${index}" type="button" title="${escapeHtml(code + ' · ' + task.name + ' · Prioridad ' + task.priority + ' · ' + task.assignee + 
+    ${task.dead_time ? 'is-dead-time' : ''}" draggable="true" data-task-index="${index}" type="button" title="${escapeHtml(code + ' · ' + task.name + ' · Prioridad ' + task.priority + ' · ' + task.assignee +
     (task.dead_time ? ' · Tiempo muerto' : ''))}"><span class="task-priority task-priority-${parseInt(task.priority)}">${task.priority}</span><span class="task-code">${escapeHtml(code)}</span><span class="compact-title">${escapeHtml(task.name)}</span>
     ${task.dead_time ? '<span class="dead-time-dot" aria-label="Tiempo muerto" title="Tiempo muerto">●</span>' : ''}</button>`;
 }
@@ -173,12 +201,12 @@ function render() {
     $("#board").innerHTML = state.tasks.length ? empty("Ninguna tarea coincide", "Prueba con otros filtros o pulsa Limpiar.") : empty("Aquí comienza el próximo avance", "Registra tu primera tarea para empezar a organizar el trabajo del equipo.", true);
   } else {
     const statuses = [...new Set([...state.config.statuses, ...tasks.map(t => t.status || "Sin estado")])];
-    $("#board").innerHTML = statuses.filter(status => !$("#filter-status").value || $("#filter-status").value === status).map(status => {
+    const selectedStatuses = multiValues("#filter-status");
+    $("#board").innerHTML = statuses.filter(status => !selectedStatuses.size || selectedStatuses.has(status)).map(status => {
       let group = tasks.filter(task => (task.status || "Sin estado") === status);
-      if(state.config.completed_statuses.includes(status)) {
+      if (state.config.completed_statuses.includes(status)) {
         group = group.slice(0, 10);
       }
-      console.log(group.length);
       return `<div class="kanban-column" data-drop-status="${escapeHtml(status)}" style="--status-color:${statusColor(status)}"><div class="column-heading"><span class="column-title"><span class="column-dot"></span>${escapeHtml(status)} <span class="count-pill">${group.length}</span></span><a href="#create" class="column-add" aria-label="Registrar tarea">＋</a></div>${group.length ? group.map(task => card(task, state.tasks.indexOf(task))).join("") : '<p class="column-empty">Sin tareas en este estado</p>'}</div>`;
     }).join("");
   }
@@ -186,15 +214,9 @@ function render() {
 }
 
 function period() {
-  const selected = dayNumber($("#timeline-date").value || localToday());
-  const scale = $("#timeline-scale").value;
-  if (scale === "day") return [selected, selected];
-  const date = new Date(selected * DAY);
-  if (scale === "week") {
-    const start = selected - ((date.getUTCDay() + 6) % 7);
-    return [start, start + 6];
-  }
-  return [Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), 1) / DAY, Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0) / DAY];
+  const start = dayNumber($("#timeline-start").value), end = dayNumber($("#timeline-end").value);
+  const fallback = dayNumber(localToday());
+  return Number.isFinite(start) && Number.isFinite(end) && end >= start ? [start, end] : [fallback, fallback];
 }
 
 function dateRange(task, actual = false) {
@@ -209,22 +231,44 @@ function renderTimeline(tasks) {
   const overlap = range => range && range[0] <= end && range[1] >= start;
   const valid = tasks.filter(t => dateRange(t) || dateRange(t, true));
   const visible = valid.filter(t => overlap(dateRange(t)) || overlap(dateRange(t, true)));
-  $("#timeline-note").textContent = `${visible.length} tareas en este periodo. ${tasks.length - valid.length} sin un intervalo válido. Las fechas reales abiertas se muestran hasta hoy.`;
+  $("#timeline-note").textContent = `${visible.length} tareas en este periodo, agrupadas por persona. Se usa una segunda línea únicamente cuando hay superposición.`;
   if (!visible.length) {
     $("#timeline").innerHTML = empty("Un poco de espacio en el calendario", "No hay tareas con fechas en este periodo. Cambia la fecha o los filtros.");
     return;
   }
   const today = dayNumber(localToday());
-  const headers = Array.from({ length: days }, (_, i) => `<span class="${start + i === today ? 'is-today' : ''}">${new Date((start + i) * DAY).getUTCDate()}</span>`).join("");
-  const bar = (task, actual) => {
-    const range = dateRange(task, actual);
-    if (!overlap(range)) return "";
+  const holidaySet = new Set(state.config.holidays || []);
+  const dayKind = day => {
+    const value = isoDay(day), weekDay = new Date(day * DAY).getUTCDay();
+    return holidaySet.has(value) ? "is-holiday" : (weekDay === 0 || weekDay === 6) ? "is-weekend" : "is-workday";
+  };
+  const headers = Array.from({ length: days }, (_, i) => {
+    const day = start + i, value = isoDay(day), kind = dayKind(day);
+    return `<span class="${kind} ${day === today ? 'is-today' : ''}" title="${kind === 'is-holiday' ? 'Festivo de Colombia' : kind === 'is-weekend' ? 'Fin de semana' : 'Día laboral'} · ${escapeHtml(formatDate(value, true))}">${new Date(day * DAY).getUTCDate()}</span>`;
+  }).join("");
+  const calendar = `<div class="gantt-calendar" aria-hidden="true">${Array.from({ length: days }, (_, i) => `<span class="${dayKind(start + i)}"></span>`).join("")}</div>`;
+  const bar = interval => {
+    const { task, actual, range, lane } = interval;
     const left = (Math.max(range[0], start) - start) / days * 100, width = (Math.min(range[1], end) - Math.max(range[0], start) + 1) / days * 100;
     const label = `${actual ? 'Real' : 'Programado'}: ${formatDate(isoDay(range[0]))} — ${formatDate(isoDay(range[1]))}`;
-    return `<button type="button" class="gantt-bar ${actual ? 'actual' : ''}" style="--left:${left}%;--width:${width}%;--status-color:${statusColor(task.status)}" title="${escapeHtml(task.name + ' · ' + label)}" aria-label="${escapeHtml(task.name + ' · ' + label)}" data-task-index="${state.tasks.indexOf(task)}">${escapeHtml(task.code)} · ${actual ? 'Real' : 'Plan'}</button>`;
+    return `<button type="button" class="gantt-bar ${actual ? 'actual' : ''}" style="--left:${left}%;--width:${width}%;--lane:${lane};--status-color:${statusColor(task.status)}" title="${escapeHtml(task.code + ' · ' + task.name + ' · ' + label)}" aria-label="${escapeHtml(task.name + ' · ' + label)}" data-task-index="${state.tasks.indexOf(task)}"><span class="task-priority task-priority-sm task-priority-${parseInt(task.priority)}">${escapeHtml(task.priority)}</span>${escapeHtml(task.code)} · ${escapeHtml(task.name)}</button>`;
   };
   const line = today >= start && today <= end ? `<span class="today-line" style="--left:${(today - start + .5) / days * 100}%"></span>` : "";
-  $("#timeline").innerHTML = `<div class="gantt" style="--days:${days};min-width:${Math.max(750, days * 30 + 240)}px"><div class="gantt-header"><div class="gantt-label">TAREA / RESPONSABLE</div><div class="gantt-days">${headers}</div></div>${visible.map(task => `<div class="gantt-row"><div class="gantt-label"><button type="button" data-task-index="${state.tasks.indexOf(task)}"><strong>${escapeHtml(task.name)}</strong><small>${escapeHtml(task.assignee)} · ${escapeHtml(task.status)}</small></button>${taskFlag(task)}</div><div class="gantt-track">${line}${bar(task, false)}${bar(task, true)}</div></div>`).join("")}</div>`;
+  const people = [...new Set(visible.map(task => task.assignee || "Sin responsable"))];
+  const rows = people.map(person => {
+    const personTasks = visible.filter(task => (task.assignee || "Sin responsable") === person);
+    const intervals = [];
+    personTasks.forEach(task => [[false, dateRange(task)], [true, dateRange(task, true)]].forEach(([actual, range]) => { if (overlap(range)) intervals.push({ task, actual, range }); }));
+    intervals.sort((a, b) => a.range[0] - b.range[0] || a.range[1] - b.range[1]);
+    const laneEnds = [-Infinity, -Infinity];
+    intervals.forEach(interval => {
+      let lane = laneEnds[0] < interval.range[0] ? 0 : laneEnds[1] < interval.range[0] ? 1 : (laneEnds[0] <= laneEnds[1] ? 0 : 1);
+      interval.lane = lane; laneEnds[lane] = Math.max(laneEnds[lane], interval.range[1]);
+    });
+    const lanes = intervals.some(interval => interval.lane === 1) ? 2 : 1;
+    return `<div class="gantt-row" style="--lanes:${lanes}"><div class="gantt-label"><strong>${escapeHtml(person)}</strong><small>${personTasks.length} tarea(s) · ${lanes} línea(s)</small></div><div class="gantt-track">${calendar}${line}${intervals.map(bar).join("")}</div></div>`;
+  }).join("");
+  $("#timeline").innerHTML = `<div class="gantt" style="--days:${days};min-width:${Math.max(750, days * 30 + 240)}px"><div class="gantt-header"><div class="gantt-label">RESPONSABLE</div><div class="gantt-days">${headers}</div></div>${rows}</div>`;
 }
 
 function showDetail(index) {
@@ -259,7 +303,8 @@ function showDetail(index) {
 }
 
 function syncScope() {
-  const individual = Boolean($("#filter-person").value);
+  const selectedPeople = multiValues("#filter-person").size, totalPeople = document.querySelectorAll("#filter-person input[type=checkbox]").length;
+  const individual = selectedPeople > 0 && selectedPeople < totalPeople;
   $("#general-view").classList.toggle("selected", !individual);
   $("#person-view").classList.toggle("selected", individual);
   $("#general-view").setAttribute("aria-pressed", String(!individual));
@@ -287,7 +332,8 @@ $("#task-form").addEventListener("submit", async event => {
     saved = data.task;
     resetTaskForm();
     notice(`Tarea ${saved.code} ${editing ? 'actualizada' : 'registrada'} correctamente.`, "success");
-    ["#filter-category", "#filter-person", "#filter-priority", "#filter-status"].forEach(s => $(s).value = "");
+    $("#filter-category").value = "";
+    document.querySelectorAll(".multi-filter").forEach(control => setMultiSelection(control, true));
     location.hash = "board";
   } catch (error) {
     $("#form-error").textContent = error.message;
@@ -305,36 +351,74 @@ no vuelvas a registrarla.`, "warning");
 });
 $("#filter-category").addEventListener("change", render);
 $("#refresh").addEventListener("click", () => refresh());
-document.querySelectorAll(".filter-controls select").forEach(select => select.addEventListener("change", syncScope));
+document.querySelector(".filter-controls").addEventListener("change", event => {
+  if (!event.target.matches(".multi-filter input")) return;
+  const control = event.target.closest(".multi-filter");
+  const labels = { "filter-person": "Todos los responsables", "filter-status": "Todos los estados", "filter-priority": "Todas las prioridades" };
+  updateMultiLabel("#" + control.id, labels[control.id]);
+  syncScope();
+});
+document.querySelector(".filter-controls").addEventListener("click", event => {
+  const button = event.target.closest("[data-multi-action]");
+  if (!button) return;
+  const control = button.closest(".multi-filter");
+  setMultiSelection(control, button.dataset.multiAction === "all");
+  syncScope();
+});
 $("#general-view").addEventListener("click", () => {
-  $("#filter-person").value = "";
+  setMultiSelection($("#filter-person"), true);
   syncScope();
 });
 $("#person-view").addEventListener("click", () => {
-  if (!$("#filter-person").value) $("#filter-person").selectedIndex = Math.min(1, $("#filter-person").options.length - 1);
+  const inputs = [...document.querySelectorAll("#filter-person input[type=checkbox]")];
+  if (!multiValues("#filter-person").size || multiValues("#filter-person").size === inputs.length) inputs.forEach((input,index) => input.checked = index === 0);
+  updateMultiLabel("#filter-person", "Todos los responsables");
   syncScope();
-  $("#filter-person").focus();
+  $("#filter-person").open = true;
 });
 $("#clear-filters").addEventListener("click", () => {
-  document.querySelectorAll(".filter-controls select, #filter-category").forEach(el => el.value = "");
+  $("#filter-category").value = "";
+  document.querySelectorAll(".multi-filter").forEach(control => setMultiSelection(control, true));
   syncScope();
 });
-$("#timeline-date").value = localToday();
-["#timeline-date", "#timeline-scale"].forEach(selector => $(selector).addEventListener("change", render));
+function setPeriodPreset(preset, anchor = localToday()) {
+  const day = dayNumber(anchor), date = new Date(day * DAY), year = date.getUTCFullYear(), month = date.getUTCMonth();
+  let start = day, end = day;
+  if (preset === "week") { start = day - ((date.getUTCDay() + 6) % 7); end = start + 6; }
+  if (preset === "month") { start = Date.UTC(year, month, 1) / DAY; end = Date.UTC(year, month + 1, 0) / DAY; }
+  if (preset === "quarter") { const first = Math.floor(month / 3) * 3; start = Date.UTC(year, first, 1) / DAY; end = Date.UTC(year, first + 3, 0) / DAY; }
+  $("#timeline-start").value = isoDay(start);
+  $("#timeline-end").value = isoDay(end);
+  render();
+}
+setPeriodPreset("month");
+$("#timeline-start").addEventListener("change", () => {
+  if ($("#timeline-end").value && $("#timeline-end").value < $("#timeline-start").value) $("#timeline-end").value = $("#timeline-start").value;
+  $("#timeline-preset").value = "custom";
+  render();
+});
+$("#timeline-end").addEventListener("change", () => {
+  if ($("#timeline-start").value && $("#timeline-end").value < $("#timeline-start").value) $("#timeline-start").value = $("#timeline-end").value;
+  $("#timeline-preset").value = "custom";
+  render();
+});
+$("#timeline-preset").addEventListener("change", () => setPeriodPreset($("#timeline-preset").value, $("#timeline-start").value || localToday()));
 function movePeriod(direction) {
-  const [start] = period(), scale = $("#timeline-scale").value;
-  if (scale === "month") {
-    const date = new Date(start * DAY);
-    $("#timeline-date").value = isoDay(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + direction, 1) / DAY);
+  const [start, end] = period(), preset = $("#timeline-preset").value;
+  if (preset === "month" || preset === "quarter") {
+    const date = new Date(start * DAY), months = preset === "quarter" ? 3 : 1;
+    setPeriodPreset(preset, isoDay(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + direction * months, 1) / DAY));
+    return;
   }
-  else $("#timeline-date").value = isoDay(start + direction * (scale === "week" ? 7 : 1));
+  const width = end - start + 1, offset = direction * width;
+  $("#timeline-start").value = isoDay(start + offset);
+  $("#timeline-end").value = isoDay(end + offset);
   render();
 }
 $("#previous-period").addEventListener("click", () => movePeriod(-1));
 $("#next-period").addEventListener("click", () => movePeriod(1));
 $("#today-period").addEventListener("click", () => {
-  $("#timeline-date").value = localToday();
-  render();
+  setPeriodPreset($("#timeline-preset").value, localToday());
 });
 document.addEventListener("click", event => {
   const target = event.target.closest("[data-task-index]");

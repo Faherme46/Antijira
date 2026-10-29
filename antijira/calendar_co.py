@@ -40,3 +40,11 @@ def business_end(start, days, saturdays=False):
         if remaining > 0:
             current += timedelta(days=1)
     return current.isoformat()
+
+
+def next_business_day(value):
+    """Primer lunes a viernes no festivo posterior a la fecha indicada."""
+    current = date.fromisoformat(value) + timedelta(days=1)
+    while current.weekday() >= 5 or current in holidays(current.year):
+        current += timedelta(days=1)
+    return current.isoformat()

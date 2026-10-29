@@ -87,6 +87,14 @@ El identificador permanece estable incluso al cambiar de categoría. El campo AP
 
 Las vistas ordenan la prioridad numérica de mayor a menor. Solo se cargan las 10 tareas terminadas más recientes, junto con todas las tareas activas. El indicador violeta identifica las tareas marcadas como **Tiempo muerto**.
 
+Al crear una tarea o cambiar su prioridad, responsable, inicio o duración, Antijira reprograma las tareas activas que le siguen al mismo responsable. La cola se ordena de mayor a menor prioridad y, en caso de empate, por antigüedad. Cada tarea posterior comienza el siguiente día laboral después de la entrega anterior; se excluyen sábados, domingos y festivos oficiales de Colombia. Las tareas terminadas y las fechas reales permanecen intactas. Cada movimiento automático queda registrado en el historial y en la auditoría.
+
+El cronograma agrupa las tareas por responsable. Normalmente utiliza un solo carril y abre un segundo únicamente cuando hay intervalos superpuestos; nunca muestra más de dos. Los días laborales, fines de semana y festivos colombianos tienen fondos distintos.
+
+Los filtros de responsable, estado y prioridad aceptan varias selecciones mediante casillas. El cronograma permite indicar libremente las fechas **Desde** y **Hasta**, o aplicar los periodos sugeridos de semana, mes y trimestre. Las flechas desplazan el intervalo completo anterior o siguiente.
+
+Los filtros múltiples aparecen inicialmente con todos los valores seleccionados y cada lista incluye **Seleccionar todos** y **Borrar todos**. Las tareas marcadas como **Tiempo muerto** conservan sus propias fechas, pero se excluyen de la cadena automática: no consumen días ni desplazan las tareas posteriores.
+
 Los consecutivos se asignan mediante incrementos atómicos en MongoDB y un índice único protege los códigos. Una actualización exige la revisión vigente: si alguien ya modificó la tarea, devuelve conflicto 409 sin sobrescribirla. El cambio de categoría y código actualiza un único documento de forma atómica. No requiere un conjunto de réplicas para transacciones de varios documentos.
 
 Puede haber saltos en la numeración si se reservó un número y luego falló la operación o hubo un conflicto. Los números no se reutilizan. Todas las instancias deben usar la misma configuración de categorías.

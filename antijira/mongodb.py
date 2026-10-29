@@ -22,7 +22,7 @@ def database_operation(function):
             raise AppError("El código o registro ya existe en MongoDB. Actualiza antes de reintentar.", 409) from exc
         except PyMongoError as exc:
             # No devolver detalles del driver que puedan contener URI o credenciales.
-            raise AppError("No se pudo completar la operación en MongoDB. Comprueba el servicio y la configuración. Si estabas guardando, actualiza antes de reintentar." + str(exc), 503) from exc
+            raise AppError("No se pudo completar la operación en MongoDB. Comprueba el servicio y la configuración. Si estabas guardando, actualiza antes de reintentar.", 503) from exc
     return wrapped
 
 
@@ -186,6 +186,28 @@ class MongoStore:
                          for key in changes if key not in ("revision", "updated_at", "updated_by")
                          and old.get(key) != self.public(document).get(key)}
         self.record_audit("task.update", actor, {"task_id": document["_id"], "code": document["code"], "changes": audit_changes})
+        return self.public(document)
+
+    @database_operation
+    def reschedule(self, task, planned_start, planned_end, actor=None, trigger_code=""):
+        """Mueve una tarea de la cola y registra el cambio con su responsable."""
+        self.initialize()
+        now = datetime.now(timezone.utc)
+        username = actor.get("username") if actor else "system"
+        revision = uuid4().hex
+        changes = {"planned_start": {"from": task.get("planned_start"), "to": planned_start},
+                   "planned_end": {"from": task.get("planned_end"), "to": planned_end}}
+        document = self.db.tasks.find_one_and_update(
+            {"_id": task["id"], "revision": task["revision"]},
+            {"$set": {"planned_start": planned_start, "planned_end": planned_end,
+                      "revision": revision, "updated_at": now, "updated_by": username},
+             "$push": {"history": {"action": "task.reschedule", "actor": username, "at": now,
+                                    "changes": changes, "trigger_code": trigger_code}}},
+            return_document=ReturnDocument.AFTER)
+        if document is None:
+            raise AppError("Una tarea de la programación cambió durante el ajuste. Actualiza y vuelve a intentarlo.", 409)
+        self.record_audit("task.reschedule", actor, {"task_id": task["id"], "code": task.get("code"),
+                                                      "trigger_code": trigger_code, "changes": changes})
         return self.public(document)
 
     def record_audit(self, action, actor, details=None):
