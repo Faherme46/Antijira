@@ -5,6 +5,11 @@ async function authRequest(path, options={}) {
   const response = await fetch(path, {cache:"no-store", ...options});
   let data = {};
   try {data = await response.json();} catch {}
+  if(response.status === 403 && String(data.error || "").includes("Sesión de página vencida")) {
+    window.__forceReload = true;
+    window.location.reload();
+    throw new Error("Actualizando la sesión de seguridad…");
+  }
   if(!response.ok) throw new Error(data.error || "No se pudo completar la operación.");
   return data;
 }

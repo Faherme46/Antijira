@@ -28,6 +28,11 @@ async function api(path, options = {}) {
   } catch {
     throw new Error("Respuesta no válida del servidor. Actualiza el tablero antes de reintentar.");
   }
+  if (response.status === 403 && String(data.error || "").includes("Sesión de página vencida")) {
+    window.__forceReload = true;
+    window.location.reload();
+    throw new Error("Actualizando la sesión de seguridad…");
+  }
   if (response.status === 401 && window.handleUnauthorized) window.handleUnauthorized();
   if (!response.ok) throw new Error(data.error || "No se pudo completar la operación.");
   return data;
@@ -364,6 +369,12 @@ document.querySelector(".filter-controls").addEventListener("click", event => {
   const control = button.closest(".multi-filter");
   setMultiSelection(control, button.dataset.multiAction === "all");
   syncScope();
+});
+document.addEventListener("click", event => {
+  const current = event.target.closest(".multi-filter");
+  document.querySelectorAll(".multi-filter[open]").forEach(control => {
+    if (control !== current) control.open = false;
+  });
 });
 $("#general-view").addEventListener("click", () => {
   setMultiSelection($("#filter-person"), true);

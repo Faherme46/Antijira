@@ -99,8 +99,8 @@ document.querySelector("#task-table").addEventListener("click",async event=>{
     tableMessages.set(key,{text:error.message,error:true});
   } finally {
     setBusy(false);
-    if(saved) {updateFilterOptions();render();} else renderTaskTable(filteredTasks());
+    if(saved) await refresh(true); else renderTaskTable(filteredTasks());
   }
 });
 document.querySelector("#table-refresh").addEventListener("click",()=>refresh());
-window.addEventListener("beforeunload",event=>{if(tableDrafts.size){event.preventDefault();event.returnValue="";}});
+window.addEventListener("beforeunload",event=>{if(tableDrafts.size && !window.__forceReload){event.preventDefault();event.returnValue="";}});
