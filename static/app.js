@@ -402,7 +402,7 @@ $("#timeline-end").addEventListener("change", () => {
   $("#timeline-preset").value = "custom";
   render();
 });
-$("#timeline-preset").addEventListener("change", () => setPeriodPreset($("#timeline-preset").value, $("#timeline-start").value || localToday()));
+$("#timeline-preset").addEventListener("change", () => setPeriodPreset($("#timeline-preset").value,  localToday()));
 function movePeriod(direction) {
   const [start, end] = period(), preset = $("#timeline-preset").value;
   if (preset === "month" || preset === "quarter") {
