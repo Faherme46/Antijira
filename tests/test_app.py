@@ -122,6 +122,13 @@ class DomainTests(unittest.TestCase):
         task=validate_task({**payload(),"end_mode":"manual","planned_end":"2026-11-10"},parameters())
         self.assertEqual(task["planned_end"],"2026-11-10")
 
+    def test_attachment_links_are_validated(self):
+        task=validate_task({**payload(),"attachments":[{"name":"Diseño","link":"https://example.com/diseno"}]},parameters())
+        self.assertEqual(task["attachments"],[{"name":"Diseño","link":"https://example.com/diseno"}])
+        for link in ("javascript:alert(1)","archivo-local","ftp://example.com/file"):
+            with self.subTest(link=link),self.assertRaises(AppError):
+                validate_task({**payload(),"attachments":[{"name":"Inválido","link":link}]},parameters())
+
     def test_creation_does_not_accept_client_actual_dates(self):
         task=validate_task({**payload(),"actual_start":"2020-01-01","actual_end":"2020-01-01","code":"BAD"},parameters())
         self.assertEqual((task["actual_start"],task["actual_end"],task["code"]),("","",""))

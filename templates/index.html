@@ -229,6 +229,10 @@
                   placeholder="Requisitos, criterios de aceptación, referencias…">
 </textarea>
               </div>
+              <div class="col-12 attachments-field">
+                <div class="attachments-heading"><div><label class="form-label">Adjuntos mediante enlaces</label><p class="muted-note">Agrega un nombre y un vínculo HTTP/HTTPS por cada recurso.</p></div><button id="add-attachment" type="button" class="btn btn-light">＋ Agregar enlace</button></div>
+                <div id="attachments-list"></div>
+              </div>
               <div class="col-md-6">
                 <label class="form-label" for="task-assignee">Responsable
                   <span>*</span>
@@ -301,6 +305,7 @@
                     <label class="form-label" for="task-actual-end">Finalización real</label>
                     <input id="task-actual-end" name="actual_end" type="date" class="form-control">
                   </div>
+                  <div class="col-12"><p id="actual-dates-note" class="muted-note" hidden>Las fechas reales se registran al cambiar el estado. Solo un administrador puede corregirlas manualmente.</p></div>
                 </div>
               </div>
             </div>

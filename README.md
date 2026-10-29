@@ -95,6 +95,10 @@ Los filtros de responsable, estado y prioridad aceptan varias selecciones median
 
 Los filtros múltiples aparecen inicialmente con todos los valores seleccionados y cada lista incluye **Seleccionar todos** y **Borrar todos**. Las tareas marcadas como **Tiempo muerto** conservan sus propias fechas, pero se excluyen de la cadena automática: no consumen días ni desplazan las tareas posteriores.
 
+Las fechas reales se registran automáticamente cuando un usuario cambia la tarea a un estado iniciado o terminado. Solo los administradores pueden corregir manualmente el inicio real y la finalización real; esta regla se valida en el servidor además de bloquear los campos en la interfaz.
+
+Cada tarea admite hasta 25 adjuntos mediante enlaces. Cada adjunto requiere un nombre y una dirección completa `http://` o `https://`; los enlaces guardados pueden abrirse desde la edición de la tarea y su cantidad se muestra en el tablero y la tabla.
+
 Los consecutivos se asignan mediante incrementos atómicos en MongoDB y un índice único protege los códigos. Una actualización exige la revisión vigente: si alguien ya modificó la tarea, devuelve conflicto 409 sin sobrescribirla. El cambio de categoría y código actualiza un único documento de forma atómica. No requiere un conjunto de réplicas para transacciones de varios documentos.
 
 Puede haber saltos en la numeración si se reservó un número y luego falló la operación o hubo un conflicto. Los números no se reutilizan. Todas las instancias deben usar la misma configuración de categorías.

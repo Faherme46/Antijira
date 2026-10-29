@@ -34,13 +34,14 @@ class MongoTests(unittest.TestCase):
         self.service = MongoTaskService(self.store)
 
     def test_create_persists_and_reloads(self):
-        created = self.service.create_task(payload())
+        created = self.service.create_task({**payload(), "attachments":[{"name":"Documento","link":"https://example.com/doc"}]})
         other = MongoTaskService(MongoStore(database=self.db))
         loaded = other.list_tasks()["tasks"][0]
         self.assertEqual(loaded["code"], "DS-001")
         self.assertEqual(created["row"], loaded["id"])
         self.assertEqual(loaded["planned_end"], "2026-11-03")
         self.assertIsInstance(self.db.tasks.find_one()["priority"], Decimal128)
+        self.assertEqual(loaded["attachments"][0]["name"], "Documento")
 
     def test_category_sequences_are_independent(self):
         def create(i):

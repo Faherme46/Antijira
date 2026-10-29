@@ -6,6 +6,7 @@ import unicodedata
 from decimal import Decimal, InvalidOperation
 from datetime import date, timedelta
 from pathlib import Path
+from urllib.parse import urlsplit
 from .calendar_co import business_end
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -142,6 +143,28 @@ def valid_date(value, field, optional=False):
         raise AppError(f"{COLUMNS[field]} debe ser una fecha válida entre 1900 y 2090.")
 
 
+def valid_attachments(value):
+    if value in (None, ""):
+        return []
+    if not isinstance(value, list) or len(value) > 25:
+        raise AppError("Los adjuntos deben ser una lista de máximo 25 enlaces.")
+    result = []
+    for item in value:
+        if not isinstance(item, dict):
+            raise AppError("Cada adjunto necesita nombre y enlace.")
+        name = item.get("name", "")
+        link = item.get("link", "")
+        if not isinstance(name, str) or not 1 <= len(name.strip()) <= 180:
+            raise AppError("El nombre de cada adjunto debe tener entre 1 y 180 caracteres.")
+        if not isinstance(link, str) or len(link.strip()) > 2048:
+            raise AppError("El enlace del adjunto no es válido.")
+        parsed = urlsplit(link.strip())
+        if parsed.scheme not in ("http", "https") or not parsed.netloc:
+            raise AppError("Los adjuntos deben usar enlaces completos http:// o https://.")
+        result.append({"name": name.strip(), "link": link.strip()})
+    return result
+
+
 def validate_task(payload, config, existing=None):
     if not isinstance(payload, dict):
         raise AppError("Envía un objeto JSON con los datos de la tarea.")
@@ -167,6 +190,10 @@ def validate_task(payload, config, existing=None):
         if type(value) is not bool:
             raise AppError("Tiempo muerto debe ser un valor sí/no.")
         task["dead_time"] = value
+    if existing is None or "attachments" in payload:
+        task["attachments"] = valid_attachments(payload.get("attachments", []))
+    else:
+        task["attachments"] = valid_attachments(existing.get("attachments", []))
     if changed("estimated_days"):
         task["estimated_days"] = duration_days(payload.get("estimated_days", ""))
     if changed("planned_start"):

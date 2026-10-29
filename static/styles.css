@@ -1057,6 +1057,9 @@ h2 {
     margin: 13px 0
 }
 
+.attachments-field{border-top:1px solid var(--line);padding-top:20px}.attachments-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.attachments-heading .muted-note{margin:0}.attachment-row{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(220px,1.3fr) auto auto;gap:8px;margin-top:9px}.attachment-row .remove-attachment{color:#9b4f4f}.attachment-count{font-size:9px;color:#65795c;margin-left:auto;white-space:nowrap}.open-attachment{text-decoration:none;display:flex;align-items:center}
+@media(max-width:700px){.attachment-row{grid-template-columns:1fr auto}.attachment-row .attachment-name{grid-column:1;grid-row:1}.attachment-row .attachment-link{grid-column:1;grid-row:2}.attachment-row .open-attachment{grid-column:2;grid-row:1}.attachment-row .remove-attachment{grid-column:2;grid-row:2}}
+
 dialog {
     border: 1px solid var(--line);
     border-radius: 14px;

@@ -51,6 +51,8 @@ class MongoTaskService:
     def _update_task(self, category_id, task_id, payload, actor=None):
         if not isinstance(payload, dict) or not isinstance(payload.get("revision"), str):
             raise AppError("Falta la versión de la tarea. Actualiza el tablero.", 409)
+        if actor is not None and actor.get("role") != "admin" and any(field in payload for field in ("actual_start", "actual_end")):
+            raise AppError("Solo un administrador puede cambiar manualmente las fechas reales.", 403)
         old = self.store.get(category_id, task_id)
         if not old or old["revision"] != payload["revision"]:
             raise AppError("La tarea cambió o se movió. Actualiza el tablero y vuelve a abrirla.", 409)

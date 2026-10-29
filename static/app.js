@@ -177,6 +177,7 @@ function card(task, index) {
   return `<button class="task-card compact-card ${isOverdue(task) ? 'is-overdue' : ''} 
     ${task.dead_time ? 'is-dead-time' : ''}" draggable="true" data-task-index="${index}" type="button" title="${escapeHtml(code + ' · ' + task.name + ' · Prioridad ' + task.priority + ' · ' + task.assignee +
     (task.dead_time ? ' · Tiempo muerto' : ''))}"><span class="task-priority task-priority-${parseInt(task.priority)}">${task.priority}</span><span class="task-code">${escapeHtml(code)}</span><span class="compact-title">${escapeHtml(task.name)}</span>
+    ${task.attachments?.length ? `<span class="attachment-count" title="${task.attachments.length} adjunto(s)">↗ ${task.attachments.length}</span>` : ''}
     ${task.dead_time ? '<span class="dead-time-dot" aria-label="Tiempo muerto" title="Tiempo muerto">●</span>' : ''}</button>`;
 }
 
@@ -290,6 +291,13 @@ function showDetail(index) {
     element.value = value;
   }
   $("#task-dead-time").checked = Boolean(task.dead_time);
+  renderAttachments(task.attachments || []);
+  const canEditActualDates = window.authState?.user?.role === "admin";
+  ["#task-actual-start", "#task-actual-end"].forEach(selector => {
+    $(selector).disabled = !canEditActualDates;
+    $(selector).title = canEditActualDates ? "" : "Solo los administradores pueden corregir fechas reales";
+  });
+  $("#actual-dates-note").hidden = canEditActualDates;
 
   $("#task-manual").checked = task.end_mode === "manual";
   $("#task-end").readOnly = !$("#task-manual").checked;
@@ -455,10 +463,36 @@ function categoryOptions(selector, all) {
   if ([...el.options].some(o => o.value === current)) el.value = current;
 }
 
+function attachmentRow(attachment = {}) {
+  const row = document.createElement("div");
+  row.className = "attachment-row";
+  const safeLink = /^https?:\/\//i.test(attachment.link || "") ? attachment.link : "";
+  row.innerHTML = `<input class="form-control attachment-name" maxlength="180" placeholder="Nombre del adjunto" aria-label="Nombre del adjunto" value="${escapeHtml(attachment.name || '')}"><input class="form-control attachment-link" type="url" maxlength="2048" placeholder="https://..." aria-label="Enlace del adjunto" value="${escapeHtml(attachment.link || '')}">${safeLink ? `<a class="btn btn-light open-attachment" href="${escapeHtml(safeLink)}" target="_blank" rel="noopener noreferrer">Abrir</a>` : ''}<button type="button" class="btn btn-light remove-attachment" aria-label="Eliminar adjunto">✕</button>`;
+  return row;
+}
+
+function renderAttachments(attachments = []) {
+  const list = $("#attachments-list");
+  list.replaceChildren(...attachments.map(attachment => attachmentRow(attachment)));
+}
+
+$("#add-attachment").addEventListener("click", () => {
+  const list = $("#attachments-list");
+  if (list.children.length >= 25) return notice("Cada tarea admite máximo 25 adjuntos.", "warning");
+  const row = attachmentRow();
+  list.append(row);
+  row.querySelector(".attachment-name").focus();
+});
+$("#attachments-list").addEventListener("click", event => {
+  const button = event.target.closest(".remove-attachment");
+  if (button) button.closest(".attachment-row").remove();
+});
+
 function formValues() {
   const values = Object.fromEntries(new FormData($("#task-form")));
   values.dead_time = $("#task-dead-time").checked;
   values.end_mode = $("#task-manual").checked ? "manual" : "auto";
+  values.attachments = [...document.querySelectorAll("#attachments-list .attachment-row")].map(row => ({name:row.querySelector(".attachment-name").value.trim(), link:row.querySelector(".attachment-link").value.trim()})).filter(item => item.name || item.link);
   return values;
 }
 
@@ -471,6 +505,9 @@ function resetTaskForm() {
   state.baseline = null;
   scheduleGeneration++;
   $("#task-form").reset();
+  renderAttachments([]);
+  ["#task-actual-start", "#task-actual-end"].forEach(selector => $(selector).disabled = false);
+  $("#actual-dates-note").hidden = true;
   $("#actual-dates").hidden = true;
   $("#task-end").readOnly = true;
   $("#form-title").textContent = "Una nueva tarea, un nuevo avance";

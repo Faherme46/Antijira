@@ -56,6 +56,18 @@ class AuthTests(unittest.TestCase):
         self.assertEqual([entry["actor"] for entry in document["history"]], ["admin", "admin"])
         self.assertEqual(self.db.audit.count_documents({"actor":"admin", "action":{"$in":["task.create","task.update"]}}), 2)
 
+    def test_only_admin_can_correct_real_dates_but_status_stamps_them(self):
+        service = MongoTaskService(self.store)
+        user = self.auth.create_user({"username":"operador", "password":"Clave-temporal-2026", "role":"user"}, self.admin)
+        created = service.create_task(task_payload(), user)
+        with self.assertRaises(AppError) as error:
+            service.update_task(created["category"], created["id"], {"revision":created["revision"], "actual_start":"2026-10-20"}, user)
+        self.assertEqual(error.exception.status, 403)
+        started = service.update_task(created["category"], created["id"], {"revision":created["revision"], "status":"EN CURSO"}, user)
+        self.assertTrue(started["actual_start"])
+        corrected = service.update_task(started["category"], started["id"], {"revision":started["revision"], "actual_start":"2026-10-20"}, self.admin)
+        self.assertEqual(corrected["actual_start"], "2026-10-20")
+
     def test_five_failed_logins_lock_account(self):
         for _ in range(5):
             with self.assertRaises(AppError):

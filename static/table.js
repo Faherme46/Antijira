@@ -36,7 +36,7 @@ function renderTaskTable(tasks) {
     const message=tableMessages.get(key);
     return `<tr data-table-key="${escapeHtml(key)}" class="${draft?'is-dirty':''} ${values.dead_time?'is-dead-time':''}">
       <td><span class="task-code">${escapeHtml(code)}</span></td>
-      <td class="table-name"><button type="button" data-task-index="${index}" title="Abrir edición completa">${escapeHtml(task.name)}</button><small>${escapeHtml(task.category_name || task.category)}</small></td>
+      <td class="table-name"><button type="button" data-task-index="${index}" title="Abrir edición completa">${escapeHtml(task.name)}</button><small>${escapeHtml(task.category_name || task.category)}${task.attachments?.length?` · ↗ ${task.attachments.length} adjunto(s)`:''}</small></td>
       <td>${escapeHtml(task.module)}</td>
       <td>${input('priority','Prioridad',values.priority,code,'type="text" inputmode="decimal" maxlength="30"')}</td>
       <td>${select('status','Estado',values.status,options(state.config.statuses,values.status),code)}</td>
@@ -46,8 +46,8 @@ function renderTaskTable(tasks) {
       <td>${input('estimated_days','Días hábiles',values.estimated_days,code,'type="number" min="1" max="3660" step="1"')}</td>
       <td>${select('end_mode','Modo de entrega',values.end_mode,[['auto','Automática'],['manual','Manual']],code)}</td>
       <td>${input('planned_end','Fin previsto',values.planned_end,code,`type="date" ${values.end_mode==='auto'?'readonly':''}`)}</td>
-      <td>${input('actual_start','Inicio real',values.actual_start,code,'type="date"')}</td>
-      <td>${input('actual_end','Fin real',values.actual_end,code,'type="date"')}</td>
+      <td>${input('actual_start','Inicio real',values.actual_start,code,`type="date" ${window.authState?.user?.role==='admin'?'':'disabled data-locked="true" title="Solo administradores"'}`)}</td>
+      <td>${input('actual_end','Fin real',values.actual_end,code,`type="date" ${window.authState?.user?.role==='admin'?'':'disabled data-locked="true" title="Solo administradores"'}`)}</td>
       <td class="table-actions"><button type="button" class="btn btn-primary" data-table-action="save" aria-label="Guardar ${escapeHtml(code)}" data-locked="${!draft}" ${!draft?'disabled':''}>Guardar</button><button type="button" class="btn btn-light" data-table-action="discard" aria-label="Descartar ${escapeHtml(code)}" data-locked="${!draft}" ${!draft?'disabled':''}>Descartar</button><p class="table-row-message ${message?.error?'error':''}" role="status">${escapeHtml(message?.text || (draft?'Cambios sin guardar':''))}</p></td>
     </tr>`;
   }).join("")}</tbody></table>`;
