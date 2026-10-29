@@ -158,9 +158,9 @@ def make_handler(service, auth_service=None):
                 self.reply(201, {"task": task})
             except AppError as exc:
                 self.reply(exc.status, {"error": str(exc)})
-            except Exception:
+            except Exception as e:
                 logging.exception("Error al registrar")
-                self.reply(500, {"error": "No se pudo confirmar el registro. Actualiza el tablero antes de reintentar."})
+                self.reply(500, {"error": "No se pudo confirmar el registro. Actualiza el tablero antes de reintentar." + str(e)})
 
         def do_PUT(self):
             self.do_POST()
