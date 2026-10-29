@@ -29,7 +29,7 @@ def database_operation(function):
 class MongoStore:
     def __init__(self, database=None, config_path=None, categories_path=None):
         self.config_path = config_path or ROOT /  "mongodb.json"
-        self.categories_path = categories_path or ROOT / "categories.json"
+        self.categories_path = categories_path or ROOT / "config"/ "categories.json"
         self._database = database
         self.client = None
         self._ready = False
